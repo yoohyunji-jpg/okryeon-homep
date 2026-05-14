@@ -701,6 +701,67 @@
     }
     .blog-card .excerpt { font-size: 13.5px; color: var(--ink-3); margin: 0; line-height: 1.5; }
 
+
+    /* Blog Featured */
+    .blog-featured {
+      margin-top: 56px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 48px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 880px) { .blog-featured { padding: 28px 20px; } }
+    .blog-featured-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 13px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+    .blog-featured-content {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: start;
+    }
+    @media (max-width: 880px) { .blog-featured-content { grid-template-columns: 1fr; gap: 32px; } }
+    .blog-featured-text .cat {
+      font-size: 12px; color: var(--accent); font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 12px;
+    }
+    .blog-featured-text h3 {
+      font-size: clamp(22px, 3vw, 30px); font-weight: 700;
+      letter-spacing: -0.03em; line-height: 1.25; margin: 0 0 16px;
+    }
+    .blog-featured-text > p {
+      font-size: 15px; line-height: 1.7; color: var(--ink-2); margin-bottom: 28px;
+    }
+    .blog-featured-steps { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+    .bfs { display: flex; gap: 16px; align-items: flex-start; }
+    .bfs-num {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center;
+    }
+    .bfs strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+    .bfs span { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+    .blog-featured-price {
+      background: var(--bg-soft, #f7f6f2); border-radius: 12px;
+      padding: 20px 22px; margin-bottom: 20px;
+    }
+    .bfp-main { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .bfp-label { font-size: 14px; font-weight: 600; color: var(--ink-1); }
+    .bfp-amount { font-size: 22px; font-weight: 700; letter-spacing: -0.03em; color: var(--accent); }
+    .bfp-note { font-size: 12.5px; color: var(--ink-3); }
+    .blog-featured-aside { display: flex; flex-direction: column; gap: 14px; }
+    .bfa-card {
+      background: var(--bg-soft, #f7f6f2);
+      border-radius: 12px; padding: 20px;
+    }
+    .bfa-card strong { display: block; font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+    .bfa-card p { font-size: 13px; color: var(--ink-3); line-height: 1.55; margin: 0; }
+
+    /* Blog cards — active */
+    .blog-card { opacity: 1; }
+
     /* Contact */
     .contact-grid {
       display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
@@ -833,7 +894,7 @@
         <span class="eyebrow hero-eyebrow">Health Angels Pilates · 옥련점</span>
         <h1 class="h-display fade-up">나만을 위한
 프리미엄 몸 케어.</h1>
-        <p class="lead hero-sub fade-up">몸 연구 30년 
+        <p class="lead hero-sub fade-up">몸 연구 30년<br>
 재활, 교정 중심의 맞춤형 수업으로 일상의 균형을 다시 만듭니다.
 </p>
         <div class="hero-actions fade-up">
@@ -1320,18 +1381,71 @@
       <div class="container">
         <div class="section-head fade-up">
           <span class="eyebrow">Blog · 블로그</span>
-          <h2 class="h-1">옥련점 일지.<br/>곧 시작합니다.</h2>
+          <h2 class="h-1">옥련점 일지.</h2>
           <p class="lead">
             수업 노트, 회원 변화 기록, 자세 교정 가이드.<br/>
-            강사들이 직접 쓰는 글로 채워질 예정입니다.
+            강사들이 직접 씁니다.
           </p>
         </div>
 
-        <div class="blog-empty">
-          <div class="badge">COMING SOON</div>
-          <p class="meta" style="font-size: 14px;">첫 글은 5월 마지막 주에 공개됩니다. 카카오 채널에 추가해 두시면 알림으로 알려드려요.</p>
+        <!-- 교정 패키지 소개 포스트 (메인) -->
+        <div class="blog-featured fade-up">
+          <div class="blog-featured-badge">교정 패키지</div>
+          <div class="blog-featured-content">
+            <div class="blog-featured-text">
+              <div class="cat">NEW · 교정 프로그램</div>
+              <h3>거북목·라운드숄더·허리통증,<br/>30회면 달라집니다</h3>
+              <p>동작을 따라 한다고 교정이 되지 않습니다. 올바른 자세의 <em>느낌</em>을 찾고, 그 느낌을 일상에서 반복하는 것 — 그것이 교정의 전부입니다. 옥련점은 Hello Body 교정 앱과 함께 30회 과정을 운영합니다.</p>
+              <div class="blog-featured-steps">
+                <div class="bfs">
+                  <div class="bfs-num">01</div>
+                  <div>
+                    <strong>측정</strong>
+                    <span>거북목 정도(cm), 라운드숄더 각도, 허리 굴곡을 스마트폰으로 수치화합니다. 숫자로 시작해야 변화도 숫자로 보입니다.</span>
+                  </div>
+                </div>
+                <div class="bfs">
+                  <div class="bfs-num">02</div>
+                  <div>
+                    <strong>인지</strong>
+                    <span>근육은 동작이 아닌 느낌으로 바뀝니다. 강사와 함께 올바른 자세의 감각을 학습합니다.</span>
+                  </div>
+                </div>
+                <div class="bfs">
+                  <div class="bfs-num">03</div>
+                  <div>
+                    <strong>리듬</strong>
+                    <span>거창한 루틴이 아닌 일상의 시간 설계. 보통의 삶에 맞는 회복 리듬을 만듭니다.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="blog-featured-price">
+                <div class="bfp-main">
+                  <span class="bfp-label">30회 교정 패키지</span>
+                  <span class="bfp-amount">600,000원</span>
+                </div>
+                <span class="bfp-note">1회당 20,000원 · Hello Body 앱 포함 · 부가세 포함</span>
+              </div>
+              <a href="http://pf.kakao.com/_KBxmFn/chat" target="_blank" rel="noopener" class="btn btn-primary btn-arrow" style="margin-top:8px;">교정 시작하기 →</a>
+            </div>
+            <div class="blog-featured-aside">
+              <div class="bfa-card">
+                <strong>거북목</strong>
+                <p>귀가 어깨보다 앞으로 나온 정도를 cm로 측정. 평균 4–6cm에서 시작해 30회 후 2cm 이하를 목표로 합니다.</p>
+              </div>
+              <div class="bfa-card">
+                <strong>라운드숄더</strong>
+                <p>어깨가 앞으로 말린 각도를 수치화. 가슴 근육의 단축과 등 근육의 약화가 원인입니다. 30회 교정으로 각도를 줄여나갑니다.</p>
+              </div>
+              <div class="bfa-card">
+                <strong>허리통증</strong>
+                <p>허리 굴곡(과전만·후만)을 측정하고 코어 심부근육 활성화로 일상의 허리 통증을 줄입니다.</p>
+              </div>
+            </div>
+          </div>
         </div>
 
+        <!-- 기존 블로그 카드 -->
         <div class="blog-cards fade-up">
           <div class="blog-card">
             <div class="ph"></div>
