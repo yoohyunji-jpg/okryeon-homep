@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>헬스엔젤스 필라테스 옥련점</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-soft: #f5f5f7;
+      --bg-deep: #0b0e0c;
+      --ink: #14171a;
+      --ink-2: #424449;
+      --ink-3: #86888c;
+      --line: #e6e6e8;
+      --line-2: #d2d2d4;
+      --accent: #2f5d44;       /* deep green from schedule header */
+      --accent-2: #4a7a5a;     /* mid green */
+      --accent-soft: #eaf2ec;
+      --radius: 18px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      letter-spacing: -0.01em;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .container-wide { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
+
+    /* Display type */
+    .h-display {
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      font-size: clamp(44px, 7vw, 96px);
+    }
+    .h-1 {
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      font-size: clamp(36px, 5vw, 64px);
+    }
+    .h-2 {
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      font-size: clamp(26px, 3.2vw, 40px);
+    }
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .lead {
+      font-size: clamp(17px, 1.4vw, 21px);
+      color: var(--ink-2);
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+    }
+    .meta {
+      font-size: 13px;
+      color: var(--ink-3);
+      letter-spacing: 0.02em;
+    }
+
+    /* Nav */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      background: rgba(255,255,255,0.78);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .brand {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 600; font-size: 15px; letter-spacing: -0.01em;
+    }
+    .brand-mark {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--accent);
+      position: relative;
+    }
+    .brand-mark::after {
+      content: ""; position: absolute; inset: 5px; border-radius: 50%;
+      background: #fff;
+    }
+    .brand-mark::before {
+      content: ""; position: absolute; left: 50%; top: 50%;
+      width: 3px; height: 3px; border-radius: 50%; background: var(--accent);
+      transform: translate(-50%, -50%);
+    }
+    .nav-links {
+      display: flex; gap: 34px; align-items: center;
+      font-size: 13px; font-weight: 500;
+      color: var(--ink-2);
+    }
+    .nav-links a { transition: color .15s ease; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-cta {
+      font-size: 13px; font-weight: 500;
+      padding: 7px 14px; border-radius: 999px;
+      background: var(--ink); color: #fff;
+      transition: background .15s ease;
+    }
+    .nav-cta:hover { background: #2a2c30; }
+    .nav-mobile { display: none; }
+    @media (max-width: 820px) {
+      .nav-links { display: none; }
+      .nav-mobile { display: block; font-size: 13px; color: var(--ink-2); }
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(72px, 14vh, 140px) 0 clamp(48px, 8vh, 96px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-eyebrow { display: inline-block; margin-bottom: 18px; }
+    .hero-sub {
+      margin: 22px auto 0;
+      max-width: 640px;
+    }
+    .hero-actions {
+      margin-top: 34px;
+      display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      height: 44px; padding: 0 22px;
+      border-radius: 999px;
+      font-size: 15px; font-weight: 500;
+      transition: all .15s ease;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #234735; }
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .btn-secondary:hover { background: var(--accent-soft); }
+    .btn-arrow::after {
+      content: "›"; font-size: 18px; line-height: 1;
+      transition: transform .15s ease; margin-left: 2px;
+    }
+    .btn-arrow:hover::after { transform: translateX(3px); }
+
+    /* Hero visual band */
+    .hero-visual {
+      margin: 56px auto 0;
+      max-width: 1240px;
+      height: clamp(360px, 56vh, 620px);
+      border-radius: 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      padding: 28px;
+      background: #efeee9;
+    }
+    .hero-visual img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+    }
+    .hero-visual::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 45%, rgba(0,0,0,0.35) 100%);
+      pointer-events: none;
+    }
+    .hero-visual .tag {
+      position: relative; z-index: 1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px; color: #fff;
+      background: rgba(0,0,0,0.35);
+      padding: 6px 10px; border-radius: 8px;
+      backdrop-filter: blur(8px);
+      letter-spacing: 0.04em;
+    }
+    .hero-visual .tag.right { text-align: right; }
+
+    /* Sections */
+    section {
+      padding: clamp(80px, 12vh, 140px) 0;
+      scroll-margin-top: 80px;
+    }
+    section.dark {
+      background: var(--bg-deep);
+      color: #f4f5f5;
+    }
+    section.dark .lead { color: rgba(255,255,255,0.7); }
+    section.dark .eyebrow { color: #8fc7a3; }
+    section.dark .meta { color: rgba(255,255,255,0.5); }
+    section.soft { background: var(--bg-soft); }
+
+    .section-head {
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto clamp(40px, 6vh, 64px);
+    }
+    .section-head .eyebrow { display: block; margin-bottom: 14px; }
+    .section-head .lead { margin-top: 18px; }
+
+    /* Pillar grid */
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 18px;
+    }
+    @media (max-width: 880px) { .pillars { grid-template-columns: 1fr; } }
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px 28px 28px;
+    }
+    section.dark .pillar { background: #15191a; border-color: #232726; }
+    .pillar h3 {
+      font-size: 22px; margin: 0 0 10px;
+      font-weight: 600; letter-spacing: -0.02em;
+    }
+    .pillar p { color: var(--ink-2); line-height: 1.6; font-size: 15px; margin: 0; }
+    section.dark .pillar p { color: rgba(255,255,255,0.7); }
+    .pillar-num {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px; color: var(--accent);
+      letter-spacing: 0.1em; margin-bottom: 28px;
+    }
+
+    /* Place — facility */
+    .place {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: clamp(28px, 5vw, 64px);
+      align-items: center;
+    }
+    @media (max-width: 880px) { .place { grid-template-columns: 1fr; } }
+    .place-visual {
+      aspect-ratio: 4/5;
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+      background: #efeee9;
+    }
+    .place-visual img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Facility gallery */
+    .facility-gallery {
+      margin-top: 96px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .facility-gallery .tile {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #efeee9;
+    }
+    .facility-gallery .tile img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .8s ease;
+    }
+    .facility-gallery .tile:hover img { transform: scale(1.04); }
+    .facility-gallery .tile .caption {
+      position: absolute; left: 18px; bottom: 16px;
+      color: #fff;
+      z-index: 1;
+      text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+    }
+    .facility-gallery .tile .caption .eyebrow {
+      color: #d9ead0;
+      font-size: 11px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .facility-gallery .tile .caption .name {
+      font-size: 18px; font-weight: 600; letter-spacing: -0.015em;
+    }
+    .facility-gallery .tile::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(0,0,0,0.5) 100%);
+      pointer-events: none;
+    }
+    .tile-1 { grid-column: span 7; aspect-ratio: 16/10; }
+    .tile-2 { grid-column: span 5; aspect-ratio: 16/10; }
+    .tile-3 { grid-column: span 4; aspect-ratio: 4/3; }
+    .tile-4 { grid-column: span 4; aspect-ratio: 4/3; }
+    .tile-5 { grid-column: span 4; aspect-ratio: 4/3; }
+    @media (max-width: 880px) {
+      .facility-gallery { grid-template-columns: 1fr; }
+      .facility-gallery .tile { grid-column: 1 / -1; aspect-ratio: 16/10; }
+    }
+    .place-info dl {
+      margin: 0; display: grid;
+      grid-template-columns: 110px 1fr;
+      row-gap: 16px; column-gap: 24px;
+      font-size: 15px;
+    }
+    .place-info dt { color: var(--ink-3); font-weight: 500; }
+    .place-info dd { margin: 0; color: var(--ink); }
+    .place-info .mini-map {
+      margin-top: 28px;
+      border: 1px solid var(--line); border-radius: 14px;
+      padding: 18px 20px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: #fff;
+    }
+    .place-info .mini-map .addr { font-size: 14px; color: var(--ink-2); }
+
+    /* Teachers */
+    .teachers {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 18px;
+      margin-top: 64px;
+    }
+    @media (max-width: 880px) { .teachers { grid-template-columns: repeat(2, 1fr); } }
+    .teacher {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .teacher-photo {
+      aspect-ratio: 4/5;
+      background:
+        radial-gradient(120% 70% at 50% 0%, rgba(74,122,90,0.12), transparent 70%),
+        repeating-linear-gradient(135deg, #efeee9 0 18px, #e8e7e1 18px 36px);
+      position: relative;
+      overflow: hidden;
+    }
+    .teacher-photo img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .teacher-photo .mono {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: clamp(56px, 7vw, 96px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      opacity: 0.5;
+    }
+    .teacher-photo .ph {
+      position: absolute; bottom: 12px; left: 14px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 10px; color: var(--ink-3); letter-spacing: 0.12em;
+    }
+    .teacher-info { padding: 18px 20px 22px; }
+    .teacher-role {
+      font-size: 12px; color: var(--accent); font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .teacher-name { font-size: 19px; font-weight: 600; margin: 6px 0 8px; }
+    .teacher-bio { font-size: 13.5px; color: var(--ink-2); line-height: 1.55; }
+
+    /* Programs */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    @media (max-width: 1000px) { .programs-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 640px) { .programs-grid { grid-template-columns: 1fr; } }
+    .prog {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      display: flex; flex-direction: column;
+      min-height: 240px;
+    }
+    .prog-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .prog-head { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .prog-cat {
+      font-size: 12px; color: var(--ink-3);
+      font-weight: 500; letter-spacing: 0.06em;
+    }
+    .prog h3 { margin: 0 0 10px; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+    .prog p { font-size: 14px; line-height: 1.6; color: var(--ink-2); margin: 0 0 14px; }
+    .prog-foot { margin-top: auto; font-size: 13px; color: var(--ink-3); }
+
+    /* Schedule */
+    .schedule-wrap {
+      margin-top: 48px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: clamp(20px, 3vw, 36px);
+      overflow: hidden;
+    }
+    .schedule-top {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-bottom: 24px; flex-wrap: wrap; gap: 14px;
+    }
+    .schedule-top h3 {
+      margin: 0; font-size: 24px; font-weight: 600; letter-spacing: -0.02em;
+    }
+    .schedule-top h3 strong { color: var(--accent); font-weight: 700; }
+    .schedule-top .pill {
+      font-size: 12px; color: var(--accent); border: 1px solid var(--accent);
+      padding: 6px 14px; border-radius: 999px; font-weight: 500;
+    }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 18px 24px;
+      margin-bottom: 18px; font-size: 13px; color: var(--ink-2);
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; border: 1.5px solid currentColor; }
+
+    .sched-scroll { overflow-x: auto; }
+    .sched-table {
+      width: 100%; min-width: 880px;
+      border-collapse: separate; border-spacing: 0;
+      font-size: 13px;
+    }
+    .sched-table th, .sched-table td {
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      padding: 10px 8px;
+    }
+    .sched-table thead th {
+      font-weight: 500; color: var(--ink-3);
+      padding: 14px 8px; border-bottom: 1px solid var(--line-2);
+      font-size: 13px;
+    }
+    .sched-table thead th.tue { color: #c87055; }
+    .sched-table thead th.thu { color: #b070a8; }
+    .sched-table thead th.sat { color: #6390d4; }
+    .sched-table .time-col {
+      width: 80px; color: var(--ink-3); font-weight: 500;
+      padding-top: 18px;
+    }
+    .sched-cell {
+      border-radius: 10px;
+      padding: 10px 11px;
+      line-height: 1.4;
+      border: 1px solid;
+    }
+    .sched-cell .t { font-size: 11.5px; opacity: 0.9; margin-bottom: 3px; font-weight: 500; }
+    .sched-cell .name { font-weight: 600; color: var(--ink); font-size: 13px; }
+    .sched-cell .who { color: var(--ink-3); font-size: 11.5px; margin-top: 3px; }
+    /* colors */
+    .c-recovery { background: #e9f3eb; border-color: #d3e6d8; color: #3b6b4a; }
+    .c-premium { background: #e9eef9; border-color: #d3def0; color: #45579a; }
+    .c-posture { background: #fbeedd; border-color: #f2dcc2; color: #a55a2a; }
+    .c-ballet { background: #f5e8f5; border-color: #ecd5ec; color: #834a85; }
+    .c-gyro { background: #fbecd9; border-color: #f2d9bd; color: #b35e2a; }
+    .c-aroma { background: #e6f4e7; border-color: #cfe6d3; color: #44774e; }
+    .happy-row td {
+      background: #f5f4ef;
+      text-align: center; color: var(--ink-3);
+      padding: 28px 0;
+      font-size: 13.5px;
+    }
+    .happy-row td strong { color: var(--ink-2); margin-right: 8px; }
+
+    /* Hello body section */
+    .hb-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+      margin-top: 48px;
+    }
+    @media (max-width: 880px) { .hb-grid { grid-template-columns: 1fr; } }
+    .hb-card {
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      min-height: 360px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .hb-card.dark { background: #0f1311; color: #f4f5f5; }
+    .hb-card.light { background: var(--accent-soft); color: var(--ink); }
+    .hb-card .eyebrow { color: inherit; opacity: 0.7; font-size: 12px; }
+    .hb-card.dark .eyebrow { color: #8fc7a3; opacity: 1; }
+    .hb-card h3 {
+      font-size: clamp(26px, 2.6vw, 34px); font-weight: 600; letter-spacing: -0.025em;
+      margin: 14px 0 16px; line-height: 1.2;
+    }
+    .hb-card p { font-size: 15px; line-height: 1.6; opacity: 0.85; margin: 0; }
+    .hb-card .hb-cta {
+      margin-top: 24px;
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 500;
+      color: inherit;
+    }
+    .hb-card.dark .hb-cta { color: #8fc7a3; }
+    .hb-card.light .hb-cta { color: var(--accent); }
+    .hb-mock {
+      align-self: flex-end;
+      width: 130px; height: 80px;
+      border-radius: 14px;
+      background:
+        repeating-linear-gradient(135deg, rgba(255,255,255,0.08) 0 12px, rgba(255,255,255,0.02) 12px 24px);
+      border: 1px solid rgba(255,255,255,0.1);
+      margin-top: 24px;
+    }
+    .hb-card.light .hb-mock {
+      background:
+        repeating-linear-gradient(135deg, rgba(47,93,68,0.1) 0 12px, rgba(47,93,68,0.03) 12px 24px);
+      border-color: rgba(47,93,68,0.15);
+    }
+
+    /* Membership */
+    .mem-head {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: 40px; align-items: end;
+      margin-bottom: 56px;
+    }
+    @media (max-width: 880px) { .mem-head { grid-template-columns: 1fr; gap: 18px; } }
+    .mem-head .eyebrow { display: block; margin-bottom: 18px; }
+    .mem-head .h-1 .accent { color: var(--accent); }
+    .mem-head .mem-sub {
+      font-size: 15px; line-height: 1.6; color: var(--ink-2);
+      padding-bottom: 14px;
+      max-width: 360px;
+    }
+    .mem-banner {
+      background: var(--accent); color: #fff;
+      border-radius: 16px;
+      padding: 22px 28px;
+      display: flex; align-items: flex-start; gap: 16px;
+      margin-bottom: 56px;
+      font-size: 14.5px; line-height: 1.55;
+    }
+    .mem-banner-dot {
+      flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%;
+      background: #8fc7a3; margin-top: 8px;
+    }
+    .mem-banner-body { flex: 1; }
+    .mem-banner-body .pill {
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      color: #fff; font-size: 11px; font-weight: 600;
+      letter-spacing: 0.08em; padding: 4px 9px; border-radius: 999px;
+      margin-right: 10px;
+    }
+    .mem-banner-body .heading { font-weight: 600; margin-bottom: 4px; }
+    .mem-banner-body .heading .label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
+      background: rgba(255,255,255,0.2); color: #fff;
+      padding: 3px 8px; border-radius: 999px; margin-right: 8px;
+    }
+    .mem-banner-body .heading strong { font-weight: 700; }
+    .mem-banner-body p { margin: 0; opacity: 0.88; }
+    .mem-banner-body p strong { font-weight: 700; opacity: 1; }
+
+    .plans-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 22px;
+    }
+    .plans-meta .eyebrow { color: var(--ink-3); }
+    .plans-meta .count { font-size: 13px; color: var(--ink-3); }
+    .plans-meta .count strong { color: var(--ink); font-weight: 600; }
+
+    .plans {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    @media (max-width: 1100px) { .plans { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .plans { grid-template-columns: 1fr; } }
+    .plan {
+      background: #f0eeea;
+      border-radius: 20px;
+      padding: 28px 26px 30px;
+      display: flex; flex-direction: column;
+      position: relative;
+    }
+    .plan-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 18px;
+    }
+    .plan-kind { font-size: 13px; color: var(--ink-3); font-weight: 500; }
+    .plan-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      padding: 4px 10px; border-radius: 999px;
+      background: var(--accent); color: #fff;
+    }
+    .plan-title {
+      font-size: clamp(34px, 3.4vw, 44px); font-weight: 700;
+      letter-spacing: -0.035em; line-height: 1; margin: 0 0 10px;
+    }
+    .plan-desc { font-size: 13.5px; color: var(--ink-2); line-height: 1.5; margin: 0; }
+    .plan-divider {
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      margin: 24px 0 22px;
+    }
+    .plan-price {
+      display: flex; align-items: baseline; gap: 4px;
+      margin-bottom: 14px;
+    }
+    .plan-price .num {
+      font-size: clamp(40px, 4vw, 52px); font-weight: 700;
+      letter-spacing: -0.035em; line-height: 1;
+    }
+    .plan-price .unit { font-size: 16px; color: var(--ink-2); font-weight: 500; }
+    .plan-foot { font-size: 12.5px; color: var(--ink-3); line-height: 1.5; }
+
+    .plan.feature {
+      background: var(--accent); color: #fff;
+    }
+    .plan.feature .plan-kind { color: rgba(255,255,255,0.6); }
+    .plan.feature .plan-tag {
+      background: rgba(255,255,255,0.18); color: #fff;
+    }
+    .plan.feature .plan-desc { color: rgba(255,255,255,0.78); }
+    .plan.feature .plan-divider { border-bottom-color: rgba(255,255,255,0.15); }
+    .plan.feature .plan-price .unit { color: rgba(255,255,255,0.65); }
+    .plan.feature .plan-foot { color: rgba(255,255,255,0.7); }
+
+    .membership-note {
+      margin-top: 40px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--ink-3);
+      justify-content: flex-end;
+    }
+    .membership-note::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); margin-right: auto;
+    }
+
+    /* Blog */
+    .blog-empty {
+      text-align: center;
+      max-width: 540px; margin: 0 auto;
+      padding: 80px 0 30px;
+    }
+    .blog-empty .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+      margin-bottom: 18px;
+    }
+    .blog-empty .badge::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent); animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .blog-cards {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      margin-top: 40px;
+    }
+    @media (max-width: 880px) { .blog-cards { grid-template-columns: 1fr; } }
+    .blog-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      opacity: 0.5;
+      transition: opacity .2s;
+    }
+    .blog-card .ph {
+      aspect-ratio: 16/10; border-radius: 12px;
+      background:
+        repeating-linear-gradient(135deg, #efeee9 0 18px, #e8e7e1 18px 36px);
+      margin-bottom: 18px;
+    }
+    .blog-card .cat {
+      font-size: 12px; color: var(--accent); font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .blog-card h4 {
+      font-size: 18px; font-weight: 600; letter-spacing: -0.02em;
+      margin: 8px 0 6px;
+    }
+    .blog-card .excerpt { font-size: 13.5px; color: var(--ink-3); margin: 0; line-height: 1.5; }
+
+    /* Contact */
+    .contact-grid {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px;
+      margin-top: 56px;
+    }
+    @media (max-width: 880px) { .contact-grid { grid-template-columns: 1fr; } }
+    .kakao-card {
+      background: #fee500;
+      border-radius: 24px;
+      padding: 44px;
+      color: #191600;
+      display: flex; flex-direction: column;
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+    }
+    .kakao-card .eyebrow { color: #5b4f00; }
+    .kakao-card h3 {
+      font-size: clamp(28px, 3vw, 38px); font-weight: 700; letter-spacing: -0.025em;
+      margin: 14px 0 14px; line-height: 1.2;
+    }
+    .kakao-card p { font-size: 15px; line-height: 1.6; opacity: 0.8; margin: 0; max-width: 380px; }
+    .kakao-cta {
+      margin-top: auto; align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 22px;
+      background: #191600; color: #fee500;
+      border-radius: 999px;
+      font-size: 15px; font-weight: 600;
+      transition: transform .15s ease;
+    }
+    .kakao-cta:hover { transform: translateY(-2px); }
+    .kakao-bubble {
+      position: absolute; top: 36px; right: 36px;
+      width: 72px; height: 72px; border-radius: 50%;
+      background: #191600; color: #fee500;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 22px;
+    }
+    .contact-info {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 44px;
+    }
+    .contact-info h4 { font-size: 13px; color: var(--ink-3); font-weight: 500;
+      text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 8px; }
+    .contact-info .big { font-size: clamp(26px, 2.4vw, 30px); font-weight: 600; letter-spacing: -0.02em; }
+    .contact-info .row { padding: 22px 0; border-top: 1px solid var(--line); }
+    .contact-info .row:first-of-type { border-top: 0; padding-top: 0; }
+    .contact-info .label { font-size: 12px; color: var(--ink-3); margin-bottom: 4px; letter-spacing: 0.05em; }
+    .contact-info .val { font-size: 15.5px; color: var(--ink); }
+
+    /* Footer */
+    footer {
+      padding: 64px 0 48px;
+      border-top: 1px solid var(--line);
+      font-size: 12.5px; color: var(--ink-3);
+    }
+    footer .row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 18px; }
+    footer .links { display: flex; gap: 22px; flex-wrap: wrap; }
+    footer .links a:hover { color: var(--ink); }
+
+    /* Subtle scroll fade-in */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .8s ease, transform .8s ease;
+    }
+    .fade-up.in {
+      opacity: 1; transform: translateY(0);
+    }
+
+    /* Quote/strap line */
+    .strap {
+      max-width: 920px; margin: 0 auto;
+      text-align: center;
+      font-size: clamp(28px, 3.4vw, 44px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .strap .accent { color: var(--accent); }
+
+    /* Marquee */
+    .marquee {
+      overflow: hidden;
+      margin: 64px 0 0;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex; gap: 56px;
+      animation: scroll 28s linear infinite;
+      font-size: 22px; font-weight: 500; letter-spacing: -0.02em;
+      color: var(--ink-2);
+    }
+    .marquee-track span.dot { color: var(--accent); }
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav" data-screen-label="00 Nav">
+    <div class="container nav-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>헬스엔젤스 필라테스 <strong style="color:var(--accent);font-weight:600;">옥련점</strong></span>
+      </a>
+      <div class="nav-links">
+        <a href="#facility">시설</a>
+        <a href="#programs">프로그램</a>
+        <a href="#membership">멤버십</a>
+        <a href="#blog">블로그</a>
+        <a href="#contact">문의</a>
+      </div>
+      <a href="#contact" class="nav-cta">상담 예약</a>
+      <span class="nav-mobile">메뉴</span>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero" data-screen-label="01 Hero">
+      <div class="container">
+        <span class="eyebrow hero-eyebrow">Health Angels Pilates · 옥련점</span>
+        <h1 class="h-display fade-up">나만을 위한
+프리미엄 몸 케어.</h1>
+        <p class="lead hero-sub fade-up">몸 연구 30년 
+재활, 교정 중심의 맞춤형 수업으로 일상의 균형을 다시 만듭니다.
+</p>
+        <div class="hero-actions fade-up">
+          <a href="#contact" class="btn btn-primary btn-arrow">상담 예약</a>
+          <a href="#programs" class="btn btn-secondary">프로그램 보기</a>
+        </div>
+
+        <div class="hero-visual fade-up">
+          <img src="images/facility-group2.jpg" alt="헬스엔젤스 필라테스 옥련점 그룹 레슨 룸" />
+          <div class="tag">STUDIO · OKRYEON</div>
+          <div class="tag right">8:1 GROUP · 1:1 PERSONAL</div>
+        </div>
+      </div>
+
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>리커버리 모션</span><span class="dot">·</span>
+          <span>자세 교정</span><span class="dot">·</span>
+          <span>프리미엄 1:1</span><span class="dot">·</span>
+          <span>자이로토닉</span><span class="dot">·</span>
+          <span>자이로키네시스</span><span class="dot">·</span>
+          <span>발레핏</span><span class="dot">·</span>
+          <span>아로마 스트레칭</span><span class="dot">·</span>
+          <span>리커버리 모션</span><span class="dot">·</span>
+          <span>자세 교정</span><span class="dot">·</span>
+          <span>프리미엄 1:1</span><span class="dot">·</span>
+          <span>자이로토닉</span><span class="dot">·</span>
+          <span>자이로키네시스</span><span class="dot">·</span>
+          <span>발레핏</span><span class="dot">·</span>
+          <span>아로마 스트레칭</span><span class="dot">·</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- STRAP -->
+    <section style="padding-top: 80px; padding-bottom: 80px;">
+      <div class="container">
+        <p class="strap fade-up">
+          몸을 제대로 알고,<br/>
+          제대로 움직이는 것. <span class="accent">그 시작.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- FACILITY -->
+    <section id="facility" class="soft" data-screen-label="02 Facility">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Facility · 시설</span>
+          <h2 class="h-1" style="font-size: 48.049999px">헬스엔젤스 필라테스 옥련점,
+프리미엄 그대로.</h2>
+          <p class="lead">옥련시장 사거리에서 도보 2분. 깔끔하고 쾌적한 환경에서
+센터 멤버를 위한 프리미엄 수업을 운영합니다.</p>
+        </div>
+
+        <div class="pillars fade-up">
+          <div class="pillar">
+            <div class="pillar-num">01 — EQUIPMENT</div>
+            <h3>거의 모든 기구</h3>
+            <p>리포머, 캐딜락, 체어, 바렐, 스프링보드. 동작의 정밀도를 다양한 기구로 끌어올립니다.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">02 — TEAM TEACHING</div>
+            <h3>그룹 수업도 개인 수업 처럼</h3>
+            <p>한 분의 회원을 세 명의 강사가 함께 논의하고 케어. 더 정교한 자극과 진단을 제공합니다.</p>
+          </div>
+          <div class="pillar">
+            <div class="pillar-num">03 — PHILOSOPHY</div>
+            <h3>지속 가능한 삶을 위한 몸</h3>
+            <p>'언제나 베스트 컨디션인 나'를 위한 일상의 균형. 자극이 아닌, 느낌의 회복.</p>
+          </div>
+        </div>
+
+        <div class="place" style="margin-top: 80px;">
+          <div class="place-visual fade-up">
+            <img src="images/facility-lobby.jpg" alt="옥련점 로비 · 리셉션" />
+          </div>
+          <div class="place-info fade-up">
+            <h3 class="h-2" style="margin: 0 0 28px;">위치와 이용 안내</h3>
+            <dl>
+              <dt>주소</dt><dd>인천 연수구 독배로 35, 7층 (옥련동)</dd>
+              <dt>운영시간</dt><dd>평일 09:00 – 22:00 · 토요일 10:00 – 12:00</dd>
+              <dt>휴무</dt><dd>일요일 · 공휴일</dd>
+              <dt>상담</dt><dd>유선 상담, 카카오톡 상담</dd>
+              <dt>주차</dt><dd>건물 주차 가능 (상담 시 안내)</dd>
+            </dl>
+            <div class="mini-map">
+              <div>
+                <div class="meta" style="margin-bottom:6px;">NEAREST · 옥련시장 사거리 도보 2분</div>
+                <div class="addr">📍 인천광역시 연수구 독배로 35</div>
+              </div>
+              <a href="https://map.kakao.com/?q=인천 연수구 독배로 35" target="_blank" class="btn btn-secondary" style="height: 38px; padding: 0 16px; font-size: 13px;">길찾기</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Facility gallery -->
+        <div class="facility-gallery fade-up">
+          <div class="tile tile-1">
+            <img src="images/facility-group.jpg" alt="그룹 레슨 룸" />
+            <div class="caption">
+              <span class="eyebrow">GROUP ROOM</span>
+              <span class="name">8:1 소규모 그룹 레슨 룸</span>
+            </div>
+          </div>
+          <div class="tile tile-2">
+            <img src="images/facility-cadillac.jpg" alt="캐딜락 룸" />
+            <div class="caption">
+              <span class="eyebrow">PRIVATE</span>
+              <span class="name">캐딜락 · 1:1 룸</span>
+            </div>
+          </div>
+          <div class="tile tile-3">
+            <img src="images/facility-gyro.jpg" alt="자이로토닉 룸" />
+            <div class="caption">
+              <span class="eyebrow">GYROTONIC</span>
+              <span class="name">자이로토닉 룸</span>
+            </div>
+          </div>
+          <div class="tile tile-4">
+            <img src="images/facility-ballet.jpg" alt="발레 스튜디오" />
+            <div class="caption">
+              <span class="eyebrow">BALLET</span>
+              <span class="name">발레 · 매트 스튜디오</span>
+            </div>
+          </div>
+          <div class="tile tile-5">
+            <img src="images/facility-consulting.jpg" alt="컨설팅 룸" />
+            <div class="caption">
+              <span class="eyebrow">CONSULTING</span>
+              <span class="name">상담실</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Teachers -->
+        <h3 class="h-2 fade-up" style="margin-top: 100px; margin-bottom: 0;">강사진</h3>
+        <p class="lead fade-up" style="margin-top: 8px;">국가대표 출신, 재활 전문가, 무용 전공자로 구성된 전문 강사진.</p>
+        <div class="teachers fade-up">
+          <div class="teacher">
+            <div class="teacher-photo"><img src="images/teacher-yoohyunji.jpg" alt="유현지 원장" /></div>
+            <div class="teacher-info">
+              <div class="teacher-role">DIRECTOR · 원장</div>
+              <div class="teacher-name">유현지</div>
+              <div class="teacher-bio">자이로토닉 · 자이로키네시스 · 발레. 무용 베이스의 정교한 움직임 코칭.</div>
+            </div>
+          </div>
+          <div class="teacher">
+            <div class="teacher-photo"><img src="images/teacher-namhyunji-crop.png" alt="남현지 강사" style="object-fit: cover" /></div>
+            <div class="teacher-info">
+              <div class="teacher-role">INSTRUCTOR · 강사</div>
+              <div class="teacher-name">남현지</div>
+              <div class="teacher-bio">리커버리 모션 · 재활 필라테스. 통증 회복을 위한 1:1 차트리뷰 전문.</div>
+            </div>
+          </div>
+          <div class="teacher">
+            <div class="teacher-photo"><span class="mono" aria-hidden="true">박</span></div>
+            <div class="teacher-info">
+              <div class="teacher-role">INSTRUCTOR · 강사</div>
+              <div class="teacher-name">박예지</div>
+              <div class="teacher-bio">자세 교정 필라테스 전담. 라운드숄더, 거북목, 골반 비대칭 케어.</div>
+            </div>
+          </div>
+          <div class="teacher">
+            <div class="teacher-photo"><img src="images/teacher-songyeeun-crop.png" alt="송예은 강사" /></div>
+            <div class="teacher-info">
+              <div class="teacher-role">INSTRUCTOR · 강사</div>
+              <div class="teacher-name">송예은</div>
+              <div class="teacher-bio">우아한 몸 발레핏 · 리커버리 모션. 스트레칭과 유연성, 코어 빌드업.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRAMS -->
+    <section id="programs" data-screen-label="03 Programs">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Programs · 프로그램</span>
+          <h2 class="h-1">목적에 따라,<br/>방법이 달라집니다.</h2>
+          <p class="lead">재활부터 자세교정, 자이로토닉까지.
+그룹 수업과 개인수업을 자연스럽게 병행하며 나에게 적합한 몸을 만들어갑니다.</p>
+        </div>
+
+        <div class="programs-grid fade-up">
+          <div class="prog">
+            <div class="prog-head"><span class="prog-dot" style="background:#7aa088"></span><span class="prog-cat">RECOVERY · 재활</span></div>
+            <h3>리커버리 모션</h3>
+            <p>통증 회복과 재활을 위한 기본기. 움직임의 질을 다시 세우고, 일상의 통증을 줄여 나갑니다.</p>
+            <div class="prog-foot">남현지 · 송예은 강사</div>
+          </div>
+          <div class="prog">
+            <div class="prog-head"><span class="prog-dot" style="background:#677fc4"></span><span class="prog-cat">PREMIUM · 1:1</span></div>
+            <h3>1:1 차트리뷰</h3>
+            <p>회원 차트를 강사 3인이 함께 검토하는 프리미엄 1:1. 정교한 진단과 다양한 자극.</p>
+            <div class="prog-foot">남현지 · 송예은 강사</div>
+          </div>
+          <div class="prog">
+            <div class="prog-head"><span class="prog-dot" style="background:#c87055"></span><span class="prog-cat">POSTURE · 자세교정</span></div>
+            <h3>자세 교정 필라테스</h3>
+            <p>거북목, 라운드숄더, 골반 비대칭. 데일리 자세를 다시 설계하는 교정 중심 수업.</p>
+            <div class="prog-foot">박예지 · 유현지 원장</div>
+          </div>
+          <div class="prog">
+            <div class="prog-head"><span class="prog-dot" style="background:#b070a8"></span><span class="prog-cat">BALLET · 발레</span></div>
+            <h3>우아한 몸 발레핏</h3>
+            <p>발레 베이스의 정렬과 유연성. 길고 우아한 라인을 만드는 코어 워크.</p>
+            <div class="prog-foot">송예은 강사 </div>
+          </div>
+          <div class="prog">
+            <div class="prog-head"><span class="prog-dot" style="background:#c89055"></span><span class="prog-cat">GYRO · 자이로</span></div>
+            <h3>자이로토닉 · 자이로키네시스</h3>
+            <p>속근육과 관절의 3차원 움직임. 호흡과 함께 이어지는 부드럽고 깊은 운동.</p>
+            <div class="prog-foot">유현지 원장</div>
+          </div>
+          <div class="prog">
+            <div class="prog-head"><span class="prog-dot" style="background:#6aaa78"></span><span class="prog-cat">RELAX · 아로마</span></div>
+            <h3>아로마 스트레칭 &amp; 릴랙스 코어</h3>
+            <p>주말의 회복 루틴. 향과 호흡, 부드러운 코어 워크로 한 주를 마무리합니다.</p>
+            <div class="prog-foot">유현지 원장 · 토요일 한정</div>
+          </div>
+        </div>
+
+        <!-- SCHEDULE -->
+        <div class="schedule-wrap fade-up" id="schedule">
+          <div class="schedule-top">
+            <h3>주간 시간표 · <strong>OKRYEON</strong></h3>
+            <span class="pill">5월 26일부터 시간표 개편</span>
+          </div>
+          <div class="legend">
+            <div class="legend-item" style="color:#3b6b4a;"><span class="legend-dot"></span>리커버리·재활</div>
+            <div class="legend-item" style="color:#45579a;"><span class="legend-dot"></span>프리미엄 1:1</div>
+            <div class="legend-item" style="color:#a55a2a;"><span class="legend-dot"></span>자세교정</div>
+            <div class="legend-item" style="color:#834a85;"><span class="legend-dot"></span>발레</div>
+            <div class="legend-item" style="color:#b35e2a;"><span class="legend-dot"></span>자이로토닉·키네시스</div>
+            <div class="legend-item" style="color:#44774e;"><span class="legend-dot"></span>아로마·스트레칭</div>
+          </div>
+          <div class="sched-scroll">
+            <table class="sched-table">
+              <thead>
+                <tr>
+                  <th style="text-align:left;">시간</th>
+                  <th>월요일</th><th class="tue">화요일</th><th>수요일</th>
+                  <th class="thu">목요일</th><th>금요일</th><th class="sat">토요일</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 09:00 -->
+                <tr>
+                  <td class="time-col">09:00</td>
+                  <td><div class="sched-cell c-recovery"><div class="t">09:00–09:50</div><div class="name">리커버리 모션 (재활)</div><div class="who">남현지 강사</div></div></td>
+                  <td><div class="sched-cell c-recovery"><div class="t">09:00–09:50</div><div class="name">리커버리 모션 (교정)</div><div class="who">송예은 강사</div></div></td>
+                  <td><div class="sched-cell c-recovery"><div class="t">09:00–09:50</div><div class="name">리커버리 모션 (재활)</div><div class="who">남현지 강사</div></div></td>
+                  <td><div class="sched-cell c-ballet"><div class="t">09:00–09:50</div><div class="name">우아한 몸 발레핏</div><div class="who">송예은 강사</div></div></td>
+                  <td><div class="sched-cell c-recovery"><div class="t">09:00–09:50</div><div class="name">리커버리 모션 (재활)</div><div class="who">남현지 강사</div></div></td>
+                  <td></td>
+                </tr>
+                <!-- 10:00 -->
+                <tr>
+                  <td class="time-col">10:00</td>
+                  <td><div class="sched-cell c-premium"><div class="t">10:00–10:50</div><div class="name">[프리미엄] 1:1 차트리뷰 · 리커버리 모션</div><div class="who">남현지 강사</div></div></td>
+                  <td><div class="sched-cell c-premium"><div class="t">10:00–10:50</div><div class="name">[프리미엄] 1:1 차트리뷰 · 리커버리 모션</div><div class="who">송예은 강사</div></div></td>
+                  <td><div class="sched-cell c-premium"><div class="t">10:00–10:50</div><div class="name">[프리미엄] 1:1 차트리뷰 · 리커버리 모션</div><div class="who">남현지 강사</div></div></td>
+                  <td><div class="sched-cell c-ballet"><div class="t">10:00–10:50</div><div class="name">[프리미엄] 우아한 몸 발레핏</div><div class="who">송예은 강사</div></div></td>
+                  <td><div class="sched-cell c-premium"><div class="t">10:00–10:50</div><div class="name">[프리미엄] 1:1 차트리뷰 · 리커버리 모션</div><div class="who">남현지 강사</div></div></td>
+                  <td><div class="sched-cell c-aroma"><div class="t">10:00–10:50</div><div class="name">아로마 스트레칭 &amp; 릴랙스 코어운동</div><div class="who">유현지 원장</div></div></td>
+                </tr>
+                <!-- 11:00 -->
+                <tr>
+                  <td class="time-col">11:00</td>
+                  <td><div class="sched-cell c-recovery"><div class="t">11:00–11:50</div><div class="name">리커버리 모션 (재활)</div><div class="who">남현지 강사</div></div></td>
+                  <td><div class="sched-cell c-recovery"><div class="t">11:00–11:50</div><div class="name">리커버리 모션</div><div class="who">송예은 강사</div></div></td>
+                  <td><div class="sched-cell c-recovery"><div class="t">11:00–11:50</div><div class="name">리커버리 모션 (재활)</div><div class="who">남현지 강사</div></div></td>
+                  <td></td>
+                  <td><div class="sched-cell c-premium"><div class="t">11:00–11:50</div><div class="name">[프리미엄] 1:1 차트리뷰 · 리커버리 모션</div><div class="who">남현지 강사</div></div></td>
+                  <td></td>
+                </tr>
+                <!-- Happy Homework Hour -->
+                <tr class="happy-row">
+                  <td colspan="7">
+                    <strong>🎓 Happy Homework Hour</strong>13:00 – 17:00 · 자유롭게 활용하세요
+                  </td>
+                </tr>
+                <!-- 18:00 -->
+                <tr>
+                  <td class="time-col">18:00</td>
+                  <td><div class="sched-cell c-posture"><div class="t">18:00–18:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td><div class="sched-cell c-gyro"><div class="t">18:30–19:20</div><div class="name">자이로키네시스 (속근육 운동)</div><div class="who">유현지 원장</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">18:00–18:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td><div class="sched-cell c-gyro"><div class="t">18:30–19:20</div><div class="name">자이로토닉 1:1</div><div class="who">유현지 원장</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">18:30–19:20</div><div class="name">1:1 자세교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td></td>
+                </tr>
+                <!-- 19:00 -->
+                <tr>
+                  <td class="time-col">19:00</td>
+                  <td><div class="sched-cell c-posture"><div class="t">19:00–19:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td><div class="sched-cell c-gyro"><div class="t">19:30–20:20</div><div class="name">자이로토닉 1:1</div><div class="who">유현지 원장</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">19:00–19:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td><div class="sched-cell c-gyro"><div class="t">19:30–20:20</div><div class="name">자이로키네시스 (속근육 운동)</div><div class="who">유현지 원장</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">19:30–20:20</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td></td>
+                </tr>
+                <!-- 20:00 -->
+                <tr>
+                  <td class="time-col">20:00</td>
+                  <td><div class="sched-cell c-posture"><div class="t">20:00–20:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">20:30–21:20</div><div class="name">자세교정 필라테스 · 남자반</div><div class="who">유현지 원장</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">20:00–20:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td><div class="sched-cell c-posture"><div class="t">20:30–21:20</div><div class="name">자세교정 필라테스 · 남자반</div><div class="who">유현지 원장</div></div></td>
+                  <td><div class="sched-cell c-ballet"><div class="t">20:30–21:20</div><div class="name">발레</div><div class="who">유현지 원장</div></div></td>
+                  <td></td>
+                </tr>
+                <!-- 21:00 -->
+                <tr>
+                  <td class="time-col">21:00</td>
+                  <td><div class="sched-cell c-posture"><div class="t">21:00–21:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td></td>
+                  <td><div class="sched-cell c-posture"><div class="t">21:00–21:50</div><div class="name">자세 교정 필라테스</div><div class="who">박예지 강사</div></div></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top: 22px; padding: 18px 20px; background: var(--accent); color: #fff; border-radius: 14px; font-size: 14px; line-height: 1.55;">
+            <strong style="font-weight: 600;">NEW · 5월 마지막 주 오픈</strong>　<span style="opacity:0.85;">1:1 자이로키네시스 · 1:1 자이로토닉 수업이 그룹 멤버십 회원들께 오픈됩니다. 화·목 저녁 배치 예정.</span>
+          </div>
+        </div>
+
+        <!-- HELLO BODY APPS -->
+        <div style="margin-top: 120px;">
+          <div class="section-head fade-up" style="margin-bottom: 24px;">
+            <span class="eyebrow">Powered by Hello Body</span>
+            <h2 class="h-1">수업이 끝나도,<br/>변화는 계속됩니다.</h2>
+            <p class="lead">
+              옥련점은 Hello Body의 교정 패키지와 숙제 시스템을 도입했습니다.<br/>
+              데이터로 측정하고, 강사와 함께 일상의 자세까지 설계합니다.
+            </p>
+          </div>
+
+          <div class="hb-grid fade-up">
+            <div class="hb-card dark">
+              <div>
+                <span class="eyebrow">HELLO BODY · 교정</span>
+                <h3>30회 패키지.<br/>느낌을 심어드립니다.</h3>
+                <p>동작을 따라 한다고 교정이 되지 않습니다. 올바른 자세의 느낌을 강사와 함께 찾고, 그 느낌을 일상에서 유지하는 30회 과정입니다.</p>
+              </div>
+              <div>
+                <div class="hb-mock"></div>
+                <a href="https://hellobody.co.kr" target="_blank" class="hb-cta">교정 시작하기 →</a>
+              </div>
+            </div>
+            <div class="hb-card light">
+              <div>
+                <span class="eyebrow" style="color: var(--accent);">HELLO BODY · 숙제</span>
+                <h3>강사가 내준 숙제,<br/>앱으로 함께 합니다.</h3>
+                <p>강사가 회원별 맞춤 숙제를 생성하고, 회원은 수행 여부와 질문을 앱으로 주고받습니다. 수업 사이의 시간이 가장 큰 변화를 만듭니다.</p>
+              </div>
+              <div>
+                <div class="hb-mock"></div>
+                <a href="https://hellobody.co.kr" target="_blank" class="hb-cta">숙제앱 안내 →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="pillars fade-up" style="margin-top: 36px;">
+            <div class="pillar">
+              <div class="pillar-num">STEP 01 — MEASURE</div>
+              <h3>측정</h3>
+              <p>거북목 정도(cm), 라운드숄더 각도, 허리 굴곡까지 — 숫자로 시작합니다.</p>
+            </div>
+            <div class="pillar">
+              <div class="pillar-num">STEP 02 — AWARE</div>
+              <h3>인지</h3>
+              <p>근육은 동작이 아닌 느낌으로 바뀝니다. 올바른 자세의 감각을 학습합니다.</p>
+            </div>
+            <div class="pillar">
+              <div class="pillar-num">STEP 03 — RHYTHM</div>
+              <h3>리듬</h3>
+              <p>거창한 루틴이 아닌 일상의 시간 설계. 보통의 삶에 맞는 회복 리듬을 만듭니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERSHIP -->
+    <section id="membership" class="soft" data-screen-label="04 Membership">
+      <div class="container">
+        <div class="mem-head fade-up">
+          <div>
+            <span class="eyebrow">Membership Guide</span>
+            <h2 class="h-1">나에게 맞는<br/><span class="accent">플랜을 선택하세요.</span></h2>
+          </div>
+          <p class="mem-sub">월 멤버십부터 연 무제한까지<br/>꾸준히 오래, 더 건강하게.</p>
+        </div>
+
+        <div class="mem-banner fade-up">
+          <span class="mem-banner-dot" aria-hidden="true"></span>
+          <div class="mem-banner-body">
+            <div class="heading"><span class="label">NEW</span>5월 마지막 주 오픈</div>
+            <p><strong>1:1 자이로키네시스 · 1:1 자이로토닉</strong> 수업이 그룹 멤버십 회원분들께 오픈됩니다. 화 · 목 저녁 (18:30 또는 19:30) 배치 예정이며, 기존과 동일한 방법으로 예약 후 참여 가능합니다.</p>
+          </div>
+        </div>
+
+        <div class="plans-meta fade-up">
+          <span class="eyebrow">Membership Plans</span>
+          <span class="count">총 <strong>4가지</strong> 플랜 · 부가세 포함</span>
+        </div>
+
+        <div class="plans fade-up">
+          <!-- Plan 1: 주 2회 -->
+          <div class="plan">
+            <div class="plan-top">
+              <span class="plan-kind">월 멤버십</span>
+              <span class="plan-tag">추천</span>
+            </div>
+            <h3 class="plan-title">주 2회</h3>
+            <p class="plan-desc">월 8회 · 시작하는 분께</p>
+            <div class="plan-divider"></div>
+            <div class="plan-price">
+              <span class="num">16</span><span class="unit">만원</span>
+            </div>
+            <div class="plan-foot">1회당 20,000원</div>
+          </div>
+
+          <!-- Plan 2: 주 3회 -->
+          <div class="plan">
+            <div class="plan-top">
+              <span class="plan-kind">월 멤버십</span>
+              <span class="plan-tag">인기</span>
+            </div>
+            <h3 class="plan-title">주 3회</h3>
+            <p class="plan-desc">월 12회 · 조금 더 집중하고 싶은 분께</p>
+            <div class="plan-divider"></div>
+            <div class="plan-price">
+              <span class="num">24</span><span class="unit">만원</span>
+            </div>
+            <div class="plan-foot">1회당 20,000원</div>
+          </div>
+
+          <!-- Plan 3: 100회 -->
+          <div class="plan feature">
+            <div class="plan-top">
+              <span class="plan-kind">연 멤버십</span>
+              <span class="plan-tag">SAVE 30%</span>
+            </div>
+            <h3 class="plan-title">100회</h3>
+            <p class="plan-desc">약 주 2회 · 50주 · 장기 계획이 있는 분께</p>
+            <div class="plan-divider"></div>
+            <div class="plan-price">
+              <span class="num">140</span><span class="unit">만원</span>
+            </div>
+            <div class="plan-foot">1회당 14,000원 — 월 멤버십 대비 30% 절약</div>
+          </div>
+
+          <!-- Plan 4: 무제한 -->
+          <div class="plan feature">
+            <div class="plan-top">
+              <span class="plan-kind">연 멤버십</span>
+              <span class="plan-tag">UNLIMITED</span>
+            </div>
+            <h3 class="plan-title">무제한</h3>
+            <p class="plan-desc">1년간 횟수 제한 없이 · 가장 자유로운 선택</p>
+            <div class="plan-divider"></div>
+            <div class="plan-price">
+              <span class="num">250</span><span class="unit">만원</span>
+            </div>
+            <div class="plan-foot">원하는 만큼, 언제든지</div>
+          </div>
+        </div>
+
+        <p class="membership-note">
+          예약 및 문의는 프론트 또는 카카오톡 채널로 안내드립니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="blog" data-screen-label="05 Blog">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Blog · 블로그</span>
+          <h2 class="h-1">옥련점 일지.<br/>곧 시작합니다.</h2>
+          <p class="lead">
+            수업 노트, 회원 변화 기록, 자세 교정 가이드.<br/>
+            강사들이 직접 쓰는 글로 채워질 예정입니다.
+          </p>
+        </div>
+
+        <div class="blog-empty">
+          <div class="badge">COMING SOON</div>
+          <p class="meta" style="font-size: 14px;">첫 글은 5월 마지막 주에 공개됩니다. 카카오 채널에 추가해 두시면 알림으로 알려드려요.</p>
+        </div>
+
+        <div class="blog-cards fade-up">
+          <div class="blog-card">
+            <div class="ph"></div>
+            <div class="cat">교정 가이드</div>
+            <h4>거북목 5cm, 어떻게 줄였나</h4>
+            <p class="excerpt">측정값으로 시작해 30회 동안의 변화를 추적한 기록.</p>
+          </div>
+          <div class="blog-card">
+            <div class="ph"></div>
+            <div class="cat">수업 노트</div>
+            <h4>자이로토닉이 처음인 회원에게</h4>
+            <p class="excerpt">속근육 운동의 첫 4주, 회원이 가장 자주 묻는 질문.</p>
+          </div>
+          <div class="blog-card">
+            <div class="ph"></div>
+            <div class="cat">회원 이야기</div>
+            <h4>출산 후 6개월, 다시 코어</h4>
+            <p class="excerpt">산후 회복을 함께 만들어간 한 회원의 3개월 기록.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="soft" data-screen-label="06 Contact">
+      <div class="container">
+        <div class="section-head fade-up">
+          <span class="eyebrow">Contact · 문의</span>
+          <h2 class="h-1">편하게,<br/>카카오톡으로.</h2>
+          <p class="lead">
+            상담, 예약, 이용권 문의 모두 카카오 채널로 받습니다.<br/>
+            평일 09:00 – 22:00 사이 빠르게 답장 드려요.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <a href="http://pf.kakao.com/_KBxmFn/chat" target="_blank" rel="noopener" class="kakao-card fade-up" id="kakaoCta">
+            <div class="kakao-bubble" aria-hidden="true">💬</div>
+            <div>
+              <span class="eyebrow">KAKAO CHANNEL · @헬스엔젤스필라테스옥련점</span>
+              <h3>채널 추가하고<br/>상담 시작하기</h3>
+              <p>채널을 추가하시면 시간표 개편, 신규 클래스, 휴무 등 옥련점 소식을 가장 먼저 받아보실 수 있어요.</p>
+            </div>
+            <span class="kakao-cta">
+              <span>카카오톡으로 상담 시작</span>
+              <span aria-hidden="true">→</span>
+            </span>
+          </a>
+
+          <div class="contact-info fade-up">
+            <h4>OKRYEON STUDIO</h4>
+            <div class="big" style="margin-bottom: 22px;">헬스엔젤스 필라테스 옥련점</div>
+
+            <div class="row">
+              <div class="label">전화</div>
+              <div class="val">010-7332-1221</div>
+            </div>
+            <div class="row">
+              <div class="label">주소</div>
+              <div class="val">인천 연수구 독배로 35, 7층<br/><span style="color:var(--ink-3);font-size:13px;">옥련시장 사거리 도보 2분</span></div>
+            </div>
+            <div class="row">
+              <div class="label">운영시간</div>
+              <div class="val">평일 09:00 – 22:00<br/>토요일 10:00 – 12:00<br/><span style="color:var(--ink-3);font-size:13px;">일요일·공휴일 휴무</span></div>
+            </div>
+            <div class="row">
+              <div class="label">카카오 채널</div>
+              <div class="val">
+                @헬스엔젤스필라테스옥련점
+                <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+                  <a href="http://pf.kakao.com/_KBxmFn/friend" target="_blank" rel="noopener" class="btn btn-secondary" style="height:34px; padding:0 14px; font-size:12.5px;">채널 추가</a>
+                  <a href="http://pf.kakao.com/_KBxmFn/chat" target="_blank" rel="noopener" class="btn btn-secondary" style="height:34px; padding:0 14px; font-size:12.5px;">1:1 채팅</a>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="label">예약</div>
+              <div class="val">100% 사전 예약제</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div>
+          <div style="font-weight: 600; color: var(--ink); margin-bottom: 6px;">헬스엔젤스 필라테스 옥련점</div>
+          <div>인천 연수구 독배로 35, 7층 · 010-7332-1221</div>
+          <div style="margin-top: 6px;">© 2026 Health Angels Pilates Okryeon. All rights reserved.</div>
+        </div>
+        <div class="links">
+          <a href="#facility">시설</a>
+          <a href="#programs">프로그램</a>
+          <a href="#membership">멤버십</a>
+          <a href="#blog">블로그</a>
+          <a href="#contact">문의</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
