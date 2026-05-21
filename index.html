@@ -139,37 +139,40 @@
       }
       .nav-mobile[aria-expanded="true"] { color: var(--accent); border-color: var(--accent); }
 
-      /* 모바일 드로어 */
-      .nav-drawer {
-        display: none;
-        position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.5); z-index: 999;
-      }
-      .nav-drawer.open { display: block; }
-      .nav-drawer-inner {
-        position: absolute; top: 0; right: 0;
-        width: 75vw; max-width: 300px; height: 100%;
-        background: #fff; padding: 24px 20px;
-        display: flex; flex-direction: column; gap: 4px;
-        box-shadow: -4px 0 24px rgba(0,0,0,0.12);
-      }
-      .nav-drawer-close {
-        align-self: flex-end; background: none; border: none;
-        font-size: 22px; cursor: pointer; color: var(--ink-2);
-        margin-bottom: 16px; padding: 4px 8px;
-      }
-      .nav-drawer a {
-        font-size: 17px; font-weight: 500; color: var(--ink-1);
-        padding: 14px 8px; border-bottom: 1px solid var(--line);
-        text-decoration: none;
-      }
-      .nav-drawer a:last-child { border-bottom: none; }
-      .nav-drawer .nav-cta {
-        margin-top: 20px; text-align: center;
-        background: var(--ink-1); color: #fff;
-        border-radius: 999px; padding: 14px;
-        font-size: 15px; font-weight: 600;
-      }
+    }
+
+    /* 모바일 드로어 — 전역 (미디어쿼리 무관) */
+    .nav-drawer {
+      display: none;
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer-inner {
+      position: absolute; top: 0; right: 0;
+      width: 75vw; max-width: 300px; height: 100%;
+      background: #fff; padding: 24px 20px;
+      display: flex; flex-direction: column; gap: 4px;
+      box-shadow: -4px 0 24px rgba(0,0,0,0.12);
+    }
+    .nav-drawer-close {
+      align-self: flex-end; background: none; border: none;
+      font-size: 22px; cursor: pointer; color: var(--ink-2);
+      margin-bottom: 16px; padding: 4px 8px; line-height: 1;
+    }
+    .nav-drawer a {
+      font-size: 17px; font-weight: 500; color: var(--ink-1);
+      padding: 14px 8px; border-bottom: 1px solid var(--line);
+      text-decoration: none;
+    }
+    .nav-drawer a:last-child { border-bottom: none; }
+    .drawer-cta {
+      margin-top: 20px; text-align: center;
+      background: var(--ink-1); color: #fff !important;
+      border-radius: 999px; padding: 14px;
+      font-size: 15px; font-weight: 600;
+      border-bottom: none !important;
     }
 
     /* Hero */
@@ -1058,7 +1061,7 @@
       <a href="#membership" class="drawer-link">멤버십</a>
       <a href="#blog" class="drawer-link">블로그</a>
       <a href="#contact" class="drawer-link">문의</a>
-      <a href="#contact" class="nav-cta drawer-link">상담 예약</a>
+      <a href="#contact" class="drawer-cta drawer-link">상담 예약</a>
     </div>
   </div>
 
