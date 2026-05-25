@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>헬스엔젤스 필라테스 옥련점 | 오픈·마감 가이드</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #f5f5f7;
+    --white:     #ffffff;
+    --black:     #1d1d1f;
+    --gray-1:    #3a3a3c;
+    --gray-2:    #6e6e73;
+    --gray-3:    #aeaeb2;
+    --gray-4:    #d2d2d7;
+    --gray-5:    #e8e8ed;
+    --gray-6:    #f5f5f7;
+    --open:      #30d158;
+    --open-soft: #e6f9ec;
+    --close:     #ff453a;
+    --close-soft:#fff0ef;
+    --amber:     #ff9f0a;
+    --amber-soft:#fff5e0;
+    --separator: rgba(0,0,0,0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--black);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  header {
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid var(--separator);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-inner {
+    max-width: 980px; margin: 0 auto;
+    padding: 0 22px; height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand { font-size: 13px; font-weight: 600; color: var(--black); }
+  .nav-meta { font-size: 12px; color: var(--gray-2); }
+
+  /* HERO */
+  .hero {
+    background: var(--black); color: var(--white);
+    text-align: center; padding: 80px 22px 70px;
+  }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--gray-3); margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: clamp(32px, 5vw, 52px); font-weight: 700;
+    letter-spacing: -1.5px; line-height: 1.07; margin-bottom: 16px;
+  }
+  .hero-sub {
+    font-size: 16px; font-weight: 300; color: var(--gray-3);
+    max-width: 460px; margin: 0 auto; line-height: 1.5;
+  }
+
+  /* MAIN */
+  main { max-width: 980px; margin: 0 auto; padding: 56px 22px 100px; }
+
+  /* 섹션 헤더 */
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 6px 14px; border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  .tag-open  { background: var(--open-soft);  color: var(--open); }
+  .tag-close { background: var(--close-soft); color: var(--close); }
+  .tag-dot { width: 7px; height: 7px; border-radius: 50%; }
+  .tag-open  .tag-dot { background: var(--open); }
+  .tag-close .tag-dot { background: var(--close); }
+
+  .section-title {
+    font-size: 26px; font-weight: 700; letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .section-desc { font-size: 14px; color: var(--gray-2); margin-bottom: 28px; }
+
+  /* 구분선 */
+  .divider { border: none; border-top: 0.5px solid var(--separator); margin: 52px 0; }
+
+  /* 스텝 카드 래퍼 */
+  .steps { display: flex; flex-direction: column; gap: 16px; }
+
+  /* 스텝 카드 */
+  .step-card {
+    background: var(--white); border-radius: 18px; overflow: hidden;
+  }
+  .step-header {
+    display: flex; align-items: center; gap: 16px;
+    padding: 22px 28px; border-bottom: 0.5px solid var(--separator);
+  }
+  .step-num {
+    width: 34px; height: 34px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700; flex-shrink: 0;
+  }
+  .num-open  { background: var(--open);  color: #fff; }
+  .num-close { background: var(--close); color: #fff; }
+  .step-title-wrap { flex: 1; }
+  .step-title { font-size: 17px; font-weight: 600; letter-spacing: -0.3px; }
+  .step-subtitle { font-size: 12px; color: var(--gray-2); margin-top: 2px; }
+
+  /* 스텝 바디 */
+  .step-body { padding: 24px 28px; }
+
+  /* 인텐트 블록 (핵심 포인트) */
+  .intent-block {
+    background: var(--gray-6); border-radius: 12px;
+    padding: 16px 20px; margin-bottom: 20px;
+    font-size: 14px; color: var(--gray-1); line-height: 1.75;
+    border-left: 3px solid var(--amber);
+  }
+  .intent-block strong { color: var(--black); font-weight: 600; }
+
+  /* 디테일 리스트 */
+  .detail-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--gray-2); margin-bottom: 12px;
+  }
+  .detail-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .detail-list li {
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 14.5px; color: var(--gray-1); line-height: 1.6;
+  }
+  .detail-list li::before {
+    content: ''; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gray-3); flex-shrink: 0; margin-top: 8px;
+  }
+  .detail-list li strong { color: var(--black); font-weight: 600; }
+  .detail-list li em { font-style: normal; color: #0071e3; font-weight: 500; }
+
+  /* 칩 태그 */
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .chip {
+    font-size: 12px; font-weight: 500; color: var(--gray-1);
+    background: var(--gray-5); border-radius: 999px; padding: 5px 13px;
+  }
+  .chip-amber { background: var(--amber-soft); color: #a06000; }
+  .chip-green { background: var(--open-soft); color: #1a8a3a; }
+  .chip-red   { background: var(--close-soft); color: #c03030; }
+
+  /* 알림 박스 */
+  .notice {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--amber-soft); border-radius: 12px;
+    padding: 16px 20px; margin-top: 16px;
+    font-size: 13.5px; color: #7a5000; line-height: 1.65;
+  }
+  .notice-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* 체크리스트 */
+  .checklist { display: flex; flex-direction: column; gap: 0; }
+  .check-item {
+    display: flex; align-items: center; gap: 14px;
+    padding: 14px 0; border-bottom: 0.5px solid var(--separator);
+    font-size: 14.5px; color: var(--gray-1);
+    cursor: pointer; user-select: none;
+  }
+  .check-item:last-child { border-bottom: none; }
+  .check-box {
+    width: 22px; height: 22px; border-radius: 6px;
+    border: 1.5px solid var(--gray-4); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+  }
+  .check-item.checked .check-box {
+    background: var(--open); border-color: var(--open);
+  }
+  .check-item.checked .check-box::after {
+    content: '✓'; color: #fff; font-size: 13px; font-weight: 700;
+  }
+  .check-item.checked .check-text { color: var(--gray-3); text-decoration: line-through; }
+  .check-item.checked-red .check-box {
+    background: var(--close); border-color: var(--close);
+  }
+  .check-item.checked-red .check-box::after {
+    content: '✓'; color: #fff; font-size: 13px; font-weight: 700;
+  }
+  .check-item.checked-red .check-text { color: var(--gray-3); text-decoration: line-through; }
+
+  /* 리셋 버튼 */
+  .reset-btn {
+    margin-top: 16px; background: none; border: 1px solid var(--gray-4);
+    border-radius: 8px; padding: 8px 16px; font-size: 13px;
+    color: var(--gray-2); cursor: pointer; font-family: inherit;
+  }
+  .reset-btn:hover { border-color: var(--gray-2); color: var(--black); }
+
+  /* FOOTER */
+  footer {
+    background: var(--black); color: var(--gray-3);
+    padding: 40px 22px; text-align: center;
+  }
+  .footer-brand { font-size: 13px; font-weight: 600; color: var(--white); margin-bottom: 6px; }
+  .footer-meta { font-size: 12px; }
+
+  @media (max-width: 640px) {
+    .step-header { padding: 18px 20px; }
+    .step-body { padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <span class="nav-brand">헬스엔젤스 필라테스 옥련점</span>
+    <span class="nav-meta">강사용 내부 문서</span>
+  </div>
+</header>
+
+<div class="hero">
+  <p class="hero-eyebrow">Instructor Guide · Open &amp; Close</p>
+  <h1 class="hero-title">오픈 · 마감 가이드</h1>
+  <p class="hero-sub">센터 오픈과 마감 시 확인해야 할 순서와 방법입니다.</p>
+</div>
+
+<main>
+
+  <!-- ── 오픈 ── -->
+  <section>
+    <div class="section-tag tag-open">
+      <span class="tag-dot"></span> OPEN
+    </div>
+    <h2 class="section-title">센터 오픈</h2>
+    <p class="section-desc">수업 시작 전 공간을 세팅합니다. 조명 → 음악 → 향 순서로 진행하세요.</p>
+
+    <div class="steps">
+
+      <!-- 조명 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-open">1</div>
+          <div class="step-title-wrap">
+            <div class="step-title">조명</div>
+            <div class="step-subtitle">센터 전체 조명 점등</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="intent-block">
+            입장 후 <strong>전체 조명을 켜주세요.</strong> 공간이 밝아야 음악·향 세팅이 순조롭게 진행됩니다.
+          </div>
+          <div class="chip-row">
+            <span class="chip chip-green">가장 먼저</span>
+            <span class="chip">전체 점등</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 음악 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-open">2</div>
+          <div class="step-title-wrap">
+            <div class="step-title">음악 세팅</div>
+            <div class="step-subtitle">아이패드 → Apple Music → 블루투스 스피커</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="intent-block">
+            센터에 비치된 <strong>아이패드</strong>의 <strong>Apple Music</strong>에 재생목록이 세팅되어 있습니다.<br>
+            그대로 플레이하면 됩니다.
+          </div>
+
+          <div class="detail-label">블루투스 연결 방법</div>
+          <ul class="detail-list">
+            <li><strong>스피커 위치</strong> — 정수기 옆 블루투스 스피커</li>
+            <li><strong>블루투스 이름</strong> — <em>hyunji'20</em></li>
+            <li>아이패드에서 <strong>설정 → 블루투스</strong>에서 <em>hyunji'20</em>을 찾아 연결하세요</li>
+            <li>이미 연결되어 있다면 바로 재생하면 됩니다</li>
+          </ul>
+
+          <div class="notice">
+            <span class="notice-icon">🔊</span>
+            <span>볼륨은 <strong>너무 크지 않게</strong>, 적적한 느낌만 없는 정도로 설정하세요. 수업 중 대화가 편안하게 들리는 수준이면 적당합니다.</span>
+          </div>
+
+          <div class="chip-row">
+            <span class="chip chip-amber">hyunji'20</span>
+            <span class="chip">Apple Music 재생목록 그대로</span>
+            <span class="chip">낮은 볼륨 유지</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 향 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-open">3</div>
+          <div class="step-title-wrap">
+            <div class="step-title">향 세팅</div>
+            <div class="step-subtitle">티라이트 + 디퓨저 아로마 오일</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="intent-block">
+            공간에 향을 더해 센터 분위기를 완성합니다.<br>
+            티라이트 점화와 디퓨저 오일 투입 두 가지를 모두 진행하세요.
+          </div>
+
+          <div class="detail-label">세팅 방법</div>
+          <ul class="detail-list">
+            <li><strong>티라이트</strong> — 라이터로 불을 붙여 지정된 위치에 놓으세요</li>
+            <li><strong>디퓨저 아로마 오일</strong> — 센터에 비치된 오일을 <strong>5~6방울</strong> 디퓨저에 떨어뜨려 주세요</li>
+          </ul>
+
+          <div class="chip-row">
+            <span class="chip chip-amber">티라이트 점화</span>
+            <span class="chip chip-amber">아로마 오일 5~6방울</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오픈 체크리스트 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-open">✓</div>
+          <div class="step-title-wrap">
+            <div class="step-title">오픈 체크리스트</div>
+            <div class="step-subtitle">완료한 항목을 탭하여 체크하세요</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="checklist" id="openChecklist">
+            <div class="check-item" onclick="toggle(this,'open')">
+              <div class="check-box"></div>
+              <span class="check-text">전체 조명 점등 완료</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'open')">
+              <div class="check-box"></div>
+              <span class="check-text">아이패드 Apple Music 재생 확인</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'open')">
+              <div class="check-box"></div>
+              <span class="check-text">블루투스 스피커(hyunji'20) 연결 확인</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'open')">
+              <div class="check-box"></div>
+              <span class="check-text">볼륨 적정 수준 확인</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'open')">
+              <div class="check-box"></div>
+              <span class="check-text">티라이트 점화 완료</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'open')">
+              <div class="check-box"></div>
+              <span class="check-text">디퓨저 아로마 오일 5~6방울 투입 완료</span>
+            </div>
+          </div>
+          <button class="reset-btn" onclick="resetChecklist('openChecklist','open')">초기화</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ── 마감 ── -->
+  <section>
+    <div class="section-tag tag-close">
+      <span class="tag-dot"></span> CLOSE
+    </div>
+    <h2 class="section-title">센터 마감</h2>
+    <p class="section-desc">마지막 수업 후 공간을 정리하고 보안을 설정합니다.</p>
+
+    <div class="steps">
+
+      <!-- 공간 정돈 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-close">1</div>
+          <div class="step-title-wrap">
+            <div class="step-title">공간 정돈</div>
+            <div class="step-subtitle">로봇 청소기 가동 전 바닥 정리</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="intent-block">
+            예약 시간에 맞춰 <strong>로봇 청소기가 자동으로 가동</strong>됩니다.<br>
+            바닥에 장애물이 없도록 미리 정리해 주세요.
+          </div>
+
+          <div class="detail-label">확인 사항</div>
+          <ul class="detail-list">
+            <li><strong>소도구</strong> — 폼롤러, 밴드, 볼 등 바닥에 놓인 소도구 모두 제자리에 수납</li>
+            <li><strong>매트</strong> — 바닥에 펼쳐진 매트 모두 말거나 수납</li>
+            <li>기구 주변 바닥까지 확인하세요</li>
+          </ul>
+
+          <div class="chip-row">
+            <span class="chip chip-red">로봇 청소기 가동 전 필수</span>
+            <span class="chip">소도구 수납</span>
+            <span class="chip">매트 정리</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 소등 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-close">2</div>
+          <div class="step-title-wrap">
+            <div class="step-title">소등</div>
+            <div class="step-subtitle">전체 조명 소등</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="intent-block">
+            공간 정돈 후 <strong>전체 조명을 끄세요.</strong><br>
+            티라이트 불씨도 반드시 확인하고 끄세요.
+          </div>
+          <div class="chip-row">
+            <span class="chip chip-red">전체 소등</span>
+            <span class="chip chip-red">티라이트 불씨 확인</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 경계 모드 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-close">3</div>
+          <div class="step-title-wrap">
+            <div class="step-title">경계 모드 설정</div>
+            <div class="step-subtitle">저녁 마감 강사만 해당</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="intent-block">
+            <strong>저녁 마지막 강사님만</strong> 경계 모드를 설정하고 퇴장하세요.<br>
+            낮 시간대 강사님은 해당 없습니다.
+          </div>
+          <div class="notice">
+            <span class="notice-icon">⚠️</span>
+            <span>경계 모드는 <strong>마지막으로 퇴장하는 저녁 강사님만</strong> 설정합니다. 중간 강사님이 설정하지 않도록 주의하세요.</span>
+          </div>
+          <div class="chip-row">
+            <span class="chip chip-red">저녁 마감 강사 전용</span>
+            <span class="chip">퇴장 직전 설정</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 마감 체크리스트 -->
+      <div class="step-card">
+        <div class="step-header">
+          <div class="step-num num-close">✓</div>
+          <div class="step-title-wrap">
+            <div class="step-title">마감 체크리스트</div>
+            <div class="step-subtitle">완료한 항목을 탭하여 체크하세요</div>
+          </div>
+        </div>
+        <div class="step-body">
+          <div class="checklist" id="closeChecklist">
+            <div class="check-item" onclick="toggle(this,'close')">
+              <div class="check-box"></div>
+              <span class="check-text">바닥 소도구 전부 수납 완료</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'close')">
+              <div class="check-box"></div>
+              <span class="check-text">매트 정리 완료</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'close')">
+              <div class="check-box"></div>
+              <span class="check-text">티라이트 불씨 소화 확인</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'close')">
+              <div class="check-box"></div>
+              <span class="check-text">전체 소등 완료</span>
+            </div>
+            <div class="check-item" onclick="toggle(this,'close')">
+              <div class="check-box"></div>
+              <span class="check-text">경계 모드 설정 완료 (저녁 마감 강사)</span>
+            </div>
+          </div>
+          <button class="reset-btn" onclick="resetChecklist('closeChecklist','close')">초기화</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="footer-brand">헬스엔젤스 필라테스 옥련점</p>
+  <p class="footer-meta">강사용 내부 문서 &nbsp;·&nbsp; 무단 배포 금지 &nbsp;·&nbsp; © 2026</p>
+</footer>
+
+<script>
+  function toggle(el, type) {
+    const cls = type === 'open' ? 'checked' : 'checked-red';
+    el.classList.toggle(cls);
+  }
+
+  function resetChecklist(id, type) {
+    const cls = type === 'open' ? 'checked' : 'checked-red';
+    document.getElementById(id).querySelectorAll('.check-item').forEach(el => {
+      el.classList.remove(cls);
+    });
+  }
+</script>
+
+</body>
+</html>

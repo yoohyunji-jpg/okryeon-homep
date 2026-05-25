@@ -1998,6 +1998,16 @@
               <span class="ig-card-soon">준비중</span>
             </div>
 
+            <div class="ig-card">
+              <div class="ig-card-icon">🏢</div>
+              <div class="ig-card-body">
+                <div class="ig-card-label">센터 운영</div>
+                <h3 class="ig-card-title">오픈 · 마감 가이드</h3>
+                <p class="ig-card-desc">조명 · 음악 · 향 세팅 · 경계 모드 · 체크리스트</p>
+              </div>
+              <button class="ig-card-btn" onclick="openOpenClose()">열기</button>
+            </div>
+
             <div class="ig-card ig-card-coming">
               <div class="ig-card-icon">📅</div>
               <div class="ig-card-body">
@@ -2020,7 +2030,7 @@
   <!-- 가이드 뷰어 모달 -->
   <div class="ig-modal" id="igModal">
     <div class="ig-modal-header">
-      <span class="ig-modal-title">자세교정 수업 가이드</span>
+      <span class="ig-modal-title" id="igModalTitle">자세교정 수업 가이드</span>
       <button class="ig-modal-close" onclick="closeGuide()">✕ 닫기</button>
     </div>
     <iframe class="ig-modal-frame" id="igFrame" src=""></iframe>
@@ -2095,13 +2105,20 @@
   <script>
 
 
+    function openOpenClose() {
+      const modal = document.getElementById('igModal');
+      const frame = document.getElementById('igFrame');
+      document.getElementById('igModalTitle').textContent = '오픈 · 마감 가이드';
+      frame.src = 'open-close-guide.html';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
     function openGuide() {
       const modal = document.getElementById('igModal');
       const frame = document.getElementById('igFrame');
-      if (!frame.getAttribute('data-loaded')) {
-        frame.src = 'guide.html';
-        frame.setAttribute('data-loaded', '1');
-      }
+      document.getElementById('igModalTitle').textContent = '자세교정 수업 가이드';
+      frame.src = 'guide.html';
       modal.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
