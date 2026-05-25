@@ -2133,9 +2133,11 @@
       document.getElementById('igPinHint').textContent = '';
     }
 
-    document.getElementById('igPinBtn').addEventListener('click', checkPin);
-    document.getElementById('igPin').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') checkPin();
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('igPinBtn').addEventListener('click', checkPin);
+      document.getElementById('igPin').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') checkPin();
+      });
     });
 
     function checkPin() {
