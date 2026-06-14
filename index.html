@@ -121,6 +121,11 @@
       transition: background .15s ease;
     }
     .nav-cta:hover { background: #2a2c30; }
+    .nav-instructor {
+      font-size: 12px; color: #c87050 !important;
+      border: 1px solid #c87050; border-radius: 999px;
+      padding: 4px 12px; font-weight: 600;
+    }
     .nav-mobile { display: none; }
     @media (max-width: 820px) {
       .nav-links { display: none; }
@@ -805,6 +810,39 @@
       from { transform: translateX(0); }
       to { transform: translateX(-50%); }
     }
+
+    /* INSTRUCTOR GATE */
+    .instructor-gate { background:#0d0f12; padding:80px 0; border-top:1px solid #2a2c30; }
+    .ig-inner { max-width:720px; margin:0 auto; }
+    .ig-eyebrow { display:inline-block; font-size:10px; font-weight:600; letter-spacing:.15em; color:#c87050; border:1px solid #c87050; border-radius:999px; padding:4px 12px; margin-bottom:16px; }
+    .ig-title { font-size:clamp(24px,3vw,32px); font-weight:700; color:#fff; letter-spacing:-.03em; margin-bottom:10px; }
+    .ig-desc { font-size:14px; color:#6a7080; margin-bottom:36px; }
+    .ig-pin-wrap { display:flex; gap:10px; align-items:center; margin-bottom:10px; }
+    .ig-pin-input { background:#1a1d22; border:1px solid #2e3138; color:#fff; border-radius:10px; padding:12px 16px; font-size:18px; letter-spacing:.3em; width:140px; outline:none; text-align:center; }
+    .ig-pin-input:focus { border-color:#c87050; }
+    .ig-pin-btn { background:#fff; color:#0d0f12; border:none; border-radius:10px; padding:12px 22px; font-size:14px; font-weight:600; cursor:pointer; }
+    .ig-pin-btn:hover { background:#e8e2d8; }
+    .ig-pin-hint { font-size:13px; color:#e05050; min-height:18px; }
+    .ig-cards { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; }
+    .ig-card { background:#1a1d22; border:1px solid #2e3138; border-radius:14px; padding:20px 24px; display:flex; align-items:center; gap:18px; transition:border-color .2s; }
+    .ig-card:hover { border-color:#4a4e58; }
+    .ig-card-icon { font-size:24px; flex-shrink:0; }
+    .ig-card-body { flex:1; }
+    .ig-card-label { font-size:10px; color:#6a7080; letter-spacing:.1em; text-transform:uppercase; margin-bottom:4px; }
+    .ig-card-title { font-size:16px; font-weight:600; color:#fff; margin-bottom:4px; }
+    .ig-card-desc { font-size:12.5px; color:#6a7080; }
+    .ig-card-btn { background:#c87050; color:#fff; border:none; border-radius:8px; padding:9px 18px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; flex-shrink:0; }
+    .ig-card-btn:hover { background:#b06040; }
+    .ig-logout { background:none; border:1px solid #2e3138; color:#6a7080; border-radius:8px; padding:8px 18px; font-size:13px; cursor:pointer; }
+    .ig-logout:hover { border-color:#4a4e58; color:#9a9890; }
+    .ig-modal { display:none; position:fixed; top:0; left:0; right:0; bottom:0; z-index:2000; flex-direction:column; background:#fff; }
+    .ig-modal.open { display:flex; }
+    .ig-modal-header { display:flex; align-items:center; justify-content:space-between; padding:14px 20px; border-bottom:1px solid #e8e8ed; background:rgba(255,255,255,.95); backdrop-filter:blur(10px); flex-shrink:0; }
+    .ig-modal-title { font-size:14px; font-weight:600; color:#1d1d1f; }
+    .ig-modal-close { background:#f5f5f7; border:none; border-radius:8px; padding:7px 14px; font-size:13px; font-weight:500; cursor:pointer; color:#3a3a3c; }
+    .ig-modal-close:hover { background:#e8e8ed; }
+    .ig-modal-frame { flex:1; border:none; width:100%; }
+    @media (max-width:640px) { .ig-card { flex-wrap:wrap; } }
   </style>
 </head>
 <body>
@@ -821,6 +859,7 @@
         <a href="#membership">멤버십</a>
         <a href="#blog">블로그</a>
         <a href="#contact">문의</a>
+        <a href="#instructor" class="nav-instructor">강사</a>
       </div>
       <a href="#contact" class="nav-cta">상담 예약</a>
       <span class="nav-mobile">메뉴</span>
@@ -1429,6 +1468,58 @@
     </div>
   </footer>
 
+  <!-- INSTRUCTOR GATE -->
+  <section id="instructor" class="instructor-gate">
+    <div class="container">
+      <div class="ig-inner fade-up">
+        <div class="ig-header">
+          <span class="ig-eyebrow">INSTRUCTOR ONLY</span>
+          <h2 class="ig-title">강사 메뉴</h2>
+          <p class="ig-desc">강사 전용 내부 문서입니다. PIN 입력 후 접근할 수 있습니다.</p>
+        </div>
+        <div class="ig-lock" id="igLock">
+          <div class="ig-pin-wrap">
+            <input type="password" class="ig-pin-input" id="igPin" placeholder="PIN 4자리" maxlength="4" inputmode="numeric" pattern="[0-9]*"/>
+            <button class="ig-pin-btn" id="igPinBtn">확인</button>
+          </div>
+          <p class="ig-pin-hint" id="igPinHint"></p>
+        </div>
+        <div class="ig-menu" id="igMenu" style="display:none;">
+          <div class="ig-cards">
+            <div class="ig-card">
+              <div class="ig-card-icon">📋</div>
+              <div class="ig-card-body">
+                <div class="ig-card-label">수업 가이드</div>
+                <h3 class="ig-card-title">자세교정 수업 가이드</h3>
+                <p class="ig-card-desc">수업 흐름 · 큐잉 스크립트 · 강사 체크포인트</p>
+              </div>
+              <button class="ig-card-btn" onclick="openGuide('guide.html', '자세교정 수업 가이드')">열기</button>
+            </div>
+            <div class="ig-card">
+              <div class="ig-card-icon">📊</div>
+              <div class="ig-card-body">
+                <div class="ig-card-label">차트리뷰 가이드</div>
+                <h3 class="ig-card-title">1:1 차트리뷰 강사 가이드</h3>
+                <p class="ig-card-desc">iPad 사용법 · 피드백 입력 · 알림톡 전송 안내</p>
+              </div>
+              <button class="ig-card-btn" onclick="openGuide('차트리뷰가이드.html', '1:1 차트리뷰 강사 가이드')">열기</button>
+            </div>
+          </div>
+          <button class="ig-logout" onclick="lockInstructor()">잠금</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 가이드 뷰어 모달 -->
+  <div class="ig-modal" id="igModal">
+    <div class="ig-modal-header">
+      <span class="ig-modal-title" id="igModalTitle"></span>
+      <button class="ig-modal-close" onclick="closeGuide()">✕ 닫기</button>
+    </div>
+    <iframe class="ig-modal-frame" id="igFrame" src=""></iframe>
+  </div>
+
   <script>
     // Fade-in on scroll
     const io = new IntersectionObserver((entries) => {
@@ -1440,6 +1531,41 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
     document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // INSTRUCTOR PIN
+    const PIN = "1221";
+    function openGuide(src, title) {
+      document.getElementById('igFrame').src = src;
+      document.getElementById('igModalTitle').textContent = title;
+      document.getElementById('igModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeGuide() {
+      document.getElementById('igModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    function lockInstructor() {
+      document.getElementById('igMenu').style.display = 'none';
+      document.getElementById('igLock').style.display = 'block';
+      document.getElementById('igPin').value = '';
+      document.getElementById('igPinHint').textContent = '';
+    }
+    function checkPin() {
+      const val = document.getElementById('igPin').value;
+      const hint = document.getElementById('igPinHint');
+      if (val === PIN) {
+        document.getElementById('igLock').style.display = 'none';
+        document.getElementById('igMenu').style.display = 'block';
+        hint.textContent = '';
+      } else {
+        hint.textContent = 'PIN이 올바르지 않습니다.';
+        document.getElementById('igPin').value = '';
+      }
+    }
+    document.getElementById('igPinBtn').addEventListener('click', checkPin);
+    document.getElementById('igPin').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPin();
+    });
   </script>
 </body>
 </html>
