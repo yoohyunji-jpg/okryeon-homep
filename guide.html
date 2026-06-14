@@ -57,6 +57,22 @@
     justify-content: space-between;
   }
 
+  .nav-guides {
+    display: flex;
+    gap: 8px;
+  }
+  .nav-guides a {
+    font-size: 12px;
+    color: #9CA3AF;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid #374151;
+    transition: all .15s;
+  }
+  .nav-guides a:hover { color: white; border-color: #6B7280; }
+  .nav-guides a.active { background: white; color: #111827; font-weight: 700; }
+
   .nav-brand {
     font-size: 13px;
     font-weight: 600;
@@ -517,8 +533,11 @@
 <!-- NAV -->
 <header>
   <div class="nav-inner">
-    <span class="nav-brand">헬스엔젤스 필라테스 옥련점</span>
-    <span class="nav-meta">강사용 수업 가이드</span>
+    <span class="nav-brand">헬스엔젤스 필라테스 옥련점 · 강사 메뉴</span>
+    <nav class="nav-guides">
+      <a href="guide.html" class="active">자세교정 가이드</a>
+      <a href="차트리뷰가이드.html">1:1 차트리뷰 가이드</a>
+    </nav>
   </div>
 </header>
 

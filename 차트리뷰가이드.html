@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>헬스엔젤스 필라테스 옥련점 | 1:1 차트리뷰 강사 가이드</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans KR', -apple-system, sans-serif;
+    background: #F8F9FA;
+    color: #111827;
+    padding: 0 0 48px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  @media print {
+    body { background: white; padding: 24px; max-width: 100%; }
+    .no-print { display: none; }
+    @page { margin: 1.5cm; size: A4; }
+  }
+
+  /* 강사 네비 */
+  header {
+    background: #111827;
+    color: white;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .nav-brand {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .nav-guides {
+    display: flex;
+    gap: 8px;
+  }
+  .nav-guides a {
+    font-size: 12px;
+    color: #9CA3AF;
+    text-decoration: none;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid #374151;
+    transition: all .15s;
+  }
+  .nav-guides a:hover { color: white; border-color: #6B7280; }
+  .nav-guides a.active { background: white; color: #111827; font-weight: 700; }
+
+  .inner {
+    padding: 0 32px;
+  }
+
+  /* 상단 */
+  .header {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+  .header .brand {
+    font-size: 13px;
+    font-weight: 700;
+    color: #6B7280;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 26px;
+    font-weight: 900;
+    color: #111827;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  .header .sub {
+    font-size: 14px;
+    color: #9CA3AF;
+  }
+
+  /* 섹션 */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6B7280;
+    margin-bottom: 12px;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40px;
+    background: #E5E7EB;
+  }
+
+  /* 목적 카드 */
+  .purpose-card {
+    background: #111827;
+    color: white;
+    border-radius: 14px;
+    padding: 24px 28px;
+    line-height: 1.9;
+    font-size: 15px;
+  }
+  .purpose-card .quote {
+    font-size: 13px;
+    color: #9CA3AF;
+    margin-bottom: 10px;
+  }
+  .purpose-card strong {
+    color: #FCD34D;
+  }
+
+  /* 사용법 단계 */
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .step {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .step-num {
+    min-width: 28px;
+    height: 28px;
+    background: #111827;
+    color: white;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .step-text {
+    font-size: 14.5px;
+    color: #1F2937;
+    line-height: 1.6;
+  }
+  .step-text span {
+    display: block;
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 3px;
+  }
+
+  /* 공지 리스트 */
+  .notice-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .notice-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #374151;
+    line-height: 1.65;
+  }
+  .notice-icon {
+    min-width: 24px;
+    height: 24px;
+    background: #F3F4F6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    margin-top: 1px;
+  }
+  .badge {
+    display: inline-block;
+    background: #FEF3C7;
+    color: #92400E;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+
+  /* 하단 */
+  .footer {
+    text-align: center;
+    margin-top: 36px;
+    font-size: 12px;
+    color: #D1D5DB;
+  }
+
+  .print-btn {
+    display: block;
+    margin: 0 auto 36px;
+    padding: 11px 28px;
+    background: #111827;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<!-- 강사 네비 -->
+<header>
+  <span class="nav-brand">헬스엔젤스 필라테스 옥련점 · 강사 메뉴</span>
+  <nav class="nav-guides">
+    <a href="guide.html">자세교정 가이드</a>
+    <a href="차트리뷰가이드.html" class="active">1:1 차트리뷰 가이드</a>
+  </nav>
+</header>
+
+<div class="inner">
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ PDF로 저장</button>
+
+<div class="header">
+  <div class="brand">헬스엔젤스 필라테스 옥련점</div>
+  <h1>1:1 차트리뷰 강사 가이드</h1>
+  <div class="sub">강사용 내부 문서</div>
+</div>
+
+<!-- 서비스 목적 -->
+<div class="section">
+  <div class="section-label">서비스 목적</div>
+  <div class="purpose-card">
+    동작과 더불어 각 회원이<br>
+    <strong>'어떻게 해야 하는가?'</strong><br>
+    <strong>'어느 부분을 신경써야 하는가?'</strong><br>
+    에 대한 인지를 높이고,<br>
+    이를 통한 <strong>몸의 실질적인 개선</strong>을 목적으로 합니다.
+  </div>
+</div>
+
+<!-- 사용 방법 -->
+<div class="section">
+  <div class="section-label">사용 방법</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-text">
+        센터에 비치된 공용 iPad를 이용합니다
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-text">
+        앱에서 <b>강사 모드</b> 선택 후 본인 이름을 탭합니다
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-text">
+        수업에 참여한 <b>회원을 검색</b>하고 선택합니다
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-text">
+        오늘 <b>잘한 것 1가지</b>와 <b>다음 수업에 신경 쓸 것 1가지</b>를 선택합니다
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-text">
+        <b>수업 종료 3분 전</b>, iPad 화면을 회원님께 보여드리며 오늘 잘한 것과 다음 수업에 신경 써야 할 것을 함께 확인합니다
+        <span>확인 후 알림톡 전송 버튼을 누르면 회원님 카카오톡으로 즉시 발송됩니다</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 공지사항 -->
+<div class="section">
+  <div class="section-label">공지 및 안내</div>
+  <div class="notice-list">
+    <div class="notice-item">
+      <div class="notice-icon">①</div>
+      카카오톡 알림톡으로 매 수업 후 회원에게 자동 전송됩니다
+    </div>
+    <div class="notice-item">
+      <div class="notice-icon">②</div>
+      다른 수업과 차별화를 위해 <b>수업 3분 전 지난 피드백 리뷰</b>를 함께 진행해 주세요
+    </div>
+    <div class="notice-item">
+      <div class="notice-icon">③</div>
+      시범 운영은 <b>금요일 오전 10시 · 저녁 7시 30분</b> 수업부터 진행됩니다
+    </div>
+    <div class="notice-item">
+      <div class="notice-icon">④</div>
+      서비스가 안정화되면 점차 전체 수업으로 확대할 예정입니다
+    </div>
+    <div class="notice-item">
+      <div class="notice-icon">⑤</div>
+      알림톡 전송은 현재 카카오톡 승인 요청 중입니다
+      <span class="badge">이번 주 내 세팅 예정</span>
+    </div>
+  </div>
+</div>
+
+<div class="footer">헬스엔젤스 필라테스 옥련점 · 강사용 내부 문서</div>
+
+</div>
+</body>
+</html>
