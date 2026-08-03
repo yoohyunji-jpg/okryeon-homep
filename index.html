@@ -118,6 +118,62 @@ nav{position:fixed;top:0;left:0;right:0;z-index:50;
 @media(max-width:820px){.rules{grid-template-columns:1fr}
   .day-split{grid-template-columns:1fr}}
 
+/* ── 40 CUES / REVIEW ── */
+.rule.wide{grid-column:1/-1;border-left-color:var(--ink)}
+.cue-block{margin-bottom:74px}
+.cue-lead{text-align:center;max-width:660px;margin:0 auto 34px}
+.cue-lead .ey{color:var(--sage-d);margin-bottom:16px}
+.cue-lead h3{font-size:clamp(22px,2.8vw,32px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.3;margin-bottom:14px}
+.cue-lead p{font-size:15.5px;color:#3A453E;line-height:1.7}
+.cue-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.cue-col{background:var(--paper);border:1px solid rgba(42,54,47,.1);
+  border-top:3px solid var(--sage-d);border-radius:2px;padding:26px 22px}
+.cue-col.c1{border-top-color:#D9A93C}
+.cue-col.c2{border-top-color:#4E7A63}
+.cue-col.c3{border-top-color:#3E6E8E}
+.cue-col.c4{border-top-color:#C0523E}
+.cue-col .st{font-size:11px;letter-spacing:.22em;font-weight:800;color:var(--muted)}
+.cue-col h5{font-size:19px;font-weight:800;letter-spacing:-.02em;margin:8px 0 6px}
+.cue-col .ds{font-size:13.5px;color:#5A655E;line-height:1.6;margin-bottom:16px}
+.cue-col .cnt{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.14em;
+  color:var(--sage-d);border:1px solid rgba(78,122,99,.35);
+  padding:4px 10px;border-radius:2px;margin-bottom:16px}
+.cue-col ul{list-style:none}
+.cue-col li{font-size:13px;color:#3A453E;line-height:1.55;
+  padding-left:13px;position:relative;margin-bottom:8px}
+.cue-col li:before{content:'';position:absolute;left:0;top:9px;
+  width:5px;height:1px;background:var(--sage-d)}
+.cue-more{text-align:center;font-size:13px;color:#6A756E;margin-top:22px;letter-spacing:.02em}
+
+.talk-wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:44px;
+  align-items:center;margin-top:46px;background:var(--paper);
+  border:1px solid rgba(42,54,47,.1);border-radius:3px;padding:40px}
+.talk-txt .ey{color:var(--sage-d);margin-bottom:16px}
+.talk-txt h4{font-size:clamp(20px,2.4vw,27px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.32;margin-bottom:16px}
+.talk-txt p{font-size:15px;color:#3A453E;line-height:1.75;margin-bottom:12px}
+.talk-txt b{font-weight:700;color:var(--ink)}
+.talk-phone{background:var(--deep);border-radius:6px;padding:26px 22px}
+.talk-phone .from{font-size:11px;letter-spacing:.16em;font-weight:800;
+  color:var(--sage);margin-bottom:14px}
+.bubble{background:var(--paper);color:var(--ink);
+  border-radius:4px 14px 14px 14px;padding:20px 22px;font-size:13.5px;line-height:1.72}
+.bubble .hd{font-size:11px;letter-spacing:.14em;font-weight:800;
+  color:var(--sage-d);margin-bottom:10px}
+.bubble .lb{font-weight:800;font-size:13px;margin:14px 0 6px}
+.bubble .lb.ok{color:var(--sage-d)}
+.bubble .lb.nx{color:#C0523E}
+.bubble ul{list-style:none}
+.bubble li{padding-left:11px;position:relative;margin-bottom:5px;color:#3A453E}
+.bubble li:before{content:'·';position:absolute;left:0}
+.bubble .memo{margin-top:12px;padding-top:12px;
+  border-top:1px solid rgba(42,54,47,.12);font-size:13px;color:#5A655E}
+.bubble .tail{margin-top:14px;font-size:11px;color:var(--muted);letter-spacing:.04em}
+@media(max-width:960px){.cue-grid{grid-template-columns:repeat(2,1fr)}
+  .talk-wrap{grid-template-columns:1fr;gap:30px;padding:30px}}
+@media(max-width:560px){.cue-grid{grid-template-columns:1fr}}
+
 .access-band{background:var(--deep);color:var(--paper);
   padding:30px 34px;border-radius:3px;margin-bottom:42px;text-align:center}
 .access-band .k{font-size:12px;letter-spacing:.2em;font-weight:800;
@@ -426,8 +482,8 @@ footer{background:var(--deep);color:#8A968F;padding:50px 0;
       <div class="ey">The System · 옥련점의 관리 시스템</div>
       <h2>수업을 파는 게 아니라,<br>당신의 <em>한 달</em>을 관리합니다.</h2>
       <p>멤버가 되는 순간 모든 수업이 열립니다. 요일로 자극과 이완을 나누고,
-      한 달에 한 번 움직임을 측정하고, 한 달치 예약으로 리듬을 고정합니다.
-      이 네 가지가 옥련점의 관리 시스템입니다.</p>
+      한 달에 한 번 움직임을 측정하고, 한 달치 예약으로 리듬을 고정하고,
+      주 1회 개별 리뷰를 남깁니다. 이 다섯 가지가 옥련점의 관리 시스템입니다.</p>
     </div>
 
     <div class="rules">
@@ -459,6 +515,13 @@ footer{background:var(--deep);color:#8A968F;padding:50px 0;
         나머지 약속을 그 위에 얹으세요. 순서가 반대가 되는 순간
         운동은 늘 가장 먼저 밀립니다.</p>
       </div>
+      <div class="rule wide">
+        <div class="n">04 · REVIEW</div>
+        <h3>주 1회, 당신 것만 따로 적어 보냅니다</h3>
+        <p>옥련점은 <b>4단계 40개의 목표</b>를 기준으로 회원의 움직임을 봅니다.
+        주 1회 리뷰 수업이 끝나면, 오늘 잘 수행한 항목과 다음 수업에서 해야 할 항목을
+        골라 알림톡으로 보내드립니다. <b>그룹 수업이지만, 그 안에서 개별성을 놓치지 않습니다.</b></p>
+      </div>
     </div>
 
     <div class="day-split">
@@ -475,6 +538,93 @@ footer{background:var(--deep);color:#8A968F;padding:50px 0;
         <p>자극으로 조인 몸을 다시 풀어냅니다. 회복이 따라오지 않는 자극은
         통증으로 돌아옵니다.</p>
         <div class="list">자이로토닉 · 자이로키네시스 · 아로마 스트레칭</div>
+      </div>
+    </div>
+
+    <div class="cue-block">
+      <div class="cue-lead">
+        <div class="ey">Forty Cues · 40개의 목표</div>
+        <h3>"오늘 잘하셨어요"로 끝내지 않습니다.</h3>
+        <p>깨어나기에서 정렬하기, 연결하기를 지나 흐르기까지.
+        네 단계에 각 10개씩, 총 40개의 구체적인 목표가 있습니다.
+        회원 한 사람이 지금 어느 항목에 와 있는지를 기록으로 남깁니다.</p>
+      </div>
+      <div class="cue-grid">
+        <div class="cue-col c1">
+          <div class="st">01 · AWAKENING</div>
+          <h5>깨어나기</h5>
+          <div class="ds">숨을 찾고 속 근육을 깨운다</div>
+          <div class="cnt">10 CUES</div>
+          <ul>
+            <li>코로 들이쉬고 입으로 길게 내쉬기</li>
+            <li>갈비뼈를 옆으로 활짝 펼치기</li>
+            <li>날개뼈를 등 아래로 미끄러뜨리기</li>
+          </ul>
+        </div>
+        <div class="cue-col c2">
+          <div class="st">02 · ALIGNMENT</div>
+          <h5>정렬하기</h5>
+          <div class="ds">골반과 척추의 자리를 찾는다</div>
+          <div class="cnt">10 CUES</div>
+          <ul>
+            <li>골반을 앞뒤 어느 쪽도 아닌 가운데에</li>
+            <li>척추를 위로 쭉 늘이기</li>
+            <li>엄지발가락과 무릎을 한 줄로 맞추기</li>
+          </ul>
+        </div>
+        <div class="cue-col c3">
+          <div class="st">03 · CONNECTION</div>
+          <h5>연결하기</h5>
+          <div class="ds">발끝의 힘을 온몸으로 잇는다</div>
+          <div class="cnt">10 CUES</div>
+          <ul>
+            <li>발바닥 세 점으로 균형 잡기</li>
+            <li>발의 힘을 허벅지 안쪽까지 잇기</li>
+            <li>필요한 곳만 움직이고 나머지는 쉬기</li>
+          </ul>
+        </div>
+        <div class="cue-col c4">
+          <div class="st">04 · FLOW</div>
+          <h5>흐르기</h5>
+          <div class="ds">숨과 움직임이 하나가 된다</div>
+          <div class="cnt">10 CUES</div>
+          <ul>
+            <li>손끝 발끝까지 에너지 뻗기</li>
+            <li>숨과 움직임의 박자를 맞추기</li>
+            <li>스스로 알아차리고 스스로 고치기</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cue-more">각 단계 10개씩 · 총 40개 · 회원 한 분의 위치를 이 지도 위에 표시합니다</div>
+
+      <div class="talk-wrap">
+        <div class="talk-txt">
+          <div class="ey">Weekly Review · 주 1회 리뷰</div>
+          <h4>수업이 끝나면,<br>기억이 아니라 기록이 남습니다.</h4>
+          <p>주 1회 리뷰 수업 후, 오늘 잘 수행하신 항목과 다음에 해야 할 항목을
+          40개 중에서 골라 <b>알림톡으로 보내드립니다.</b></p>
+          <p>다음 수업에 오실 때 무엇을 신경 써야 하는지 알고 오시게 됩니다.
+          그룹 수업이어도 <b>내 이름으로 된 숙제</b>가 매주 생깁니다.</p>
+        </div>
+        <div class="talk-phone">
+          <div class="from">알림톡 · 헬스엔젤스 필라테스 옥련점</div>
+          <div class="bubble">
+            <div class="hd">이번 주 리뷰</div>
+            ○○○ 회원님, 오늘 수업 잘하셨습니다.
+            <div class="lb ok">잘 수행하신 것</div>
+            <ul>
+              <li>02 정렬하기 05 — 골반 각도와 척추를 함께 맞추기</li>
+              <li>03 연결하기 01 — 발바닥 세 점으로 균형 잡기</li>
+            </ul>
+            <div class="lb nx">다음 수업에서 해볼 것</div>
+            <ul>
+              <li>01 깨어나기 07 — 날개뼈를 등 아래로 미끄러뜨리기</li>
+            </ul>
+            <div class="memo">숨을 크게 쉴 때 어깨가 함께 올라갑니다.
+            갈비뼈를 옆으로만 넓히는 감각부터 잡아보겠습니다.</div>
+            <div class="tail">— 담당 강사 드림</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -666,8 +816,8 @@ footer{background:var(--deep);color:#8A968F;padding:50px 0;
       <div class="eff-card">
         <div class="ic">03 · 나만의 초점</div>
         <h4>내 몸의 숙제가 생긴다</h4>
-        <p>매달 내 몸에 맞는 초점 하나. 흩어진 운동이 아니라
-        방향이 있는 한 달을 보냅니다.</p>
+        <p>주 1회 알림톡으로 이번 주에 신경 쓸 항목이, 매달 측정으로
+        이번 달의 초점이 정해집니다. 방향이 있는 한 달을 보냅니다.</p>
       </div>
     </div>
   </div>
@@ -846,7 +996,7 @@ footer{background:var(--deep);color:#8A968F;padding:50px 0;
         </tbody>
       </table>
     </div>
-    <div class="sched-note">움직임 측정 · 화 17:30 / 금 19:30 / 토 09:20 (각 30분, 월 1회) · 오전 리뷰 · 월 09:00 / 수 10:00 / 금 11:00 · 예약은 한 달 단위 100% 사전 예약제</div>
+    <div class="sched-note">시간표의 <b>(리뷰)</b> 표시 = 주 1회 리뷰 수업 · 수업 후 40개 목표 기준 개별 피드백을 알림톡으로 발송 · 움직임 측정 · 화 17:30 / 금 19:30 / 토 09:20 (각 30분, 월 1회) · 예약은 한 달 단위 100% 사전 예약제</div>
   </div>
 </section>
 
