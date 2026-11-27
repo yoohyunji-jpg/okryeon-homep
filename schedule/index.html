@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>체험 스케줄 · 헬스엔젤스 필라테스 옥련점</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#F6F2EC;color:#1F1D1A;font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;padding:24px;word-break:keep-all}
+  .box{width:100%;max-width:360px;background:#fff;border:1px solid #E2DACE;border-radius:16px;padding:28px 24px;text-align:center}
+  .brand{font-size:13px;font-weight:700;color:#A8382B;margin:0 0 8px}
+  h1{font-size:20px;margin:0 0 18px}
+  input{width:100%;font:inherit;font-size:18px;text-align:center;letter-spacing:.3em;padding:12px;border:1px solid #E2DACE;border-radius:10px;min-height:48px}
+  button{width:100%;margin-top:12px;font:inherit;font-size:16px;font-weight:700;color:#fff;background:#A8382B;border:none;border-radius:10px;min-height:48px;cursor:pointer}
+  .err{color:#8A2C22;font-size:14px;min-height:20px;margin:10px 0 0}
+  .note{color:#5C554C;font-size:13px;line-height:1.6;margin:16px 0 0}
+</style>
+</head>
+<body>
+<form class="box" id="f">
+  <p class="brand">헬스엔젤스 필라테스 옥련점</p>
+  <h1>체험 수업 스케줄</h1>
+  <input id="pw" type="password" inputmode="numeric" autocomplete="off" aria-label="접근 비밀번호" placeholder="비밀번호">
+  <button type="submit">들어가기</button>
+  <p class="err" id="err" role="alert"></p>
+  <p class="note">센터 직원용 페이지예요.<br>Claude에 로그인한 상태에서 열려요.</p>
+</form>
+<script>
+  document.getElementById('f').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (document.getElementById('pw').value === '00000') {
+      location.href = 'https://claude.ai/artifact/AStLEG74sHUbyVyUZyZPn6';
+    } else {
+      document.getElementById('err').textContent = '비밀번호가 맞지 않아요.';
+    }
+  });
+</script>
+</body>
+</html>
