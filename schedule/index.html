@@ -24,13 +24,13 @@
   <input id="pw" type="password" inputmode="numeric" autocomplete="off" aria-label="접근 비밀번호" placeholder="비밀번호">
   <button type="submit">들어가기</button>
   <p class="err" id="err" role="alert"></p>
-  <p class="note">센터 직원용 페이지예요.<br>Claude에 로그인한 상태에서 열려요.</p>
+  <p class="note">센터 직원용 페이지예요.<br>로그인 없이 볼 수 있어요.</p>
 </form>
 <script>
   document.getElementById('f').addEventListener('submit', function (e) {
     e.preventDefault();
     if (document.getElementById('pw').value === '00000') {
-      location.href = 'https://claude.ai/artifact/AStLEG74sHUbyVyUZyZPn6';
+      location.href = 'https://docs.google.com/spreadsheets/d/1zaK_Z553xWTtPncG5KSjHIM980jvSna9_n43Se3SfR8/edit?usp=sharing';
     } else {
       document.getElementById('err').textContent = '비밀번호가 맞지 않아요.';
     }
